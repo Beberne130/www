@@ -1,32 +1,3 @@
-<?php
-$servername = "eb67u.myd.infomaniak.com";
-$username = "eb67u_site";
-$password = "MDPsparkless30";
-$dbname = "eb67u_sparkless";
-
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-
-    $nom =  $_REQUEST['prenom'];
-    $prenom = $_REQUEST['nom'];
-    $email =  $_REQUEST['adresseemail'];
-    $motdepasse = $_REQUEST['motdepasse'];
-    $nbcig = $_REQUEST['nombrecigarettes'];
-
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "INSERT INTO users (nom, prenom, age, email, passwd, nbCigaretteInscription)
-            VALUES ('$nom', '$prenom', 20, '$email', '$passwd', '$nbcig')";
-    // use exec() because no results are returned
-    $conn->exec($sql);
-    echo "Nouvel utilisateur créé avec succès :D";
-}
-
-catch(PDOException $e) {
-     echo $sql . "<br>" . $e->getMessage();
-}
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -55,7 +26,7 @@ catch(PDOException $e) {
 <body class="bg-light">
     <main class="container text-center">
         <div class="row justify-content-md-center align-items-center" style="min-height: 100vh">
-            <form id="form-signup" class="w-50" action="" method="post">
+            <form id="form-signup" class="w-50" action="signup-prog.php" method="post">
                 <a href="../index.html"><img class="mb-4" src="../img/icon/android-chrome-192x192.png" alt="" width="72"
                         height="72" /></a>
                 <h2 class="mb-3 text-center">Inscription</h2>
