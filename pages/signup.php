@@ -1,3 +1,32 @@
+<?php
+$servername = "eb67u.myd.infomaniak.com";
+$username = "eb67u_site";
+$password = "MDPsparkless30";
+$dbname = "eb67u_sparkless";
+
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+
+    $nom =  $_REQUEST['prenom'];
+    $prenom = $_REQUEST['nom'];
+    $email =  $_REQUEST['adresseemail'];
+    $motdepasse = $_REQUEST['motdepasse'];
+    $nbcig = $_REQUEST['nombrecigarettes'];
+
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $sql = "INSERT INTO users (nom, prenom, age, email, passwd, nbCigaretteInscription)
+            VALUES ('$nom', '$prenom', 20, '$email', '$passwd', '$nbcig')";
+    // use exec() because no results are returned
+    $conn->exec($sql);
+    echo "Nouvel utilisateur créé avec succès :D";
+}
+
+catch(PDOException $e) {
+     echo $sql . "<br>" . $e->getMessage();
+}
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -26,7 +55,7 @@
 <body class="bg-light">
     <main class="container text-center">
         <div class="row justify-content-md-center align-items-center" style="min-height: 100vh">
-            <form id="form-signup" class="w-50">
+            <form id="form-signup" class="w-50" action="" method="post">
                 <a href="../index.html"><img class="mb-4" src="../img/icon/android-chrome-192x192.png" alt="" width="72"
                         height="72" /></a>
                 <h2 class="mb-3 text-center">Inscription</h2>
@@ -45,14 +74,14 @@
                     <!-- Prénom -->
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="prenom" placeholder="John" />
+                            <input type="text" class="form-control" id="prenom" placeholder="John" name="prenom" />
                             <label for="prenom">Prénom</label>
                         </div>
                     </div>
                     <!-- Nom -->
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="nom" placeholder="Doe" />
+                            <input type="text" class="form-control" id="nom" placeholder="Doe" name="nom" />
                             <label for="nom">Nom</label>
                         </div>
                     </div>
@@ -62,7 +91,8 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="email" placeholder="john.doe@example.com" />
+                            <input type="email" class="form-control" id="email" placeholder="john.doe@example.com"
+                                name="adressemail" />
                             <label for="email">Adresse email</label>
                         </div>
                     </div>
@@ -72,7 +102,8 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control" id="password" placeholder="6mi5q9rvYrl&Rx4v" />
+                            <input type="password" class="form-control" id="password" placeholder="6mi5q9rvYrl&Rx4v"
+                                name="motdepasse" />
                             <label for="password">Mot de passe</label>
                         </div>
                     </div>
@@ -82,7 +113,8 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="number" class="form-control" id="nbrcig" placeholder="22" />
+                            <input type="number" class="form-control" id="nbrcig" placeholder="22"
+                                name="nombrecigarettes" />
                             <label for="nbrcig">Nombre de cigarettes consommés quotidiennement</label>
                         </div>
                     </div>
@@ -90,8 +122,9 @@
 
                 <br />
 
-                <button type="button" class="inscrire btn btn-lg btn-"><i class="fas fa-arrow-right"></i>
-                    S'inscrire</button>
+                <button type="submit" class="inscrire btn btn-lg btn-"><i
+                        class="fas fa-arrow-right"></i>S'inscrire</button>
+
                 <div id="apiError"></div>
             </form>
         </div>
