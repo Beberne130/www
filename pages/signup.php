@@ -33,7 +33,7 @@
                 <h2 class="mb-3 text-center">Inscription</h2>
 
                 <!-- Changement page -->
-                <div class="alert alert-primary" role="alert">J'ai déjà un compte. <a href="signin.html"
+                <div class="alert alert-primary" role="alert">J'ai déjà un compte. <a href="signin.php"
                         class="alert-link">Je me connecte</a></div>
 
                 <!-- Message d'erreur
