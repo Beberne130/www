@@ -37,12 +37,8 @@
 		$sql = "INSERT INTO users VALUES ('0', '$nom', '$prenom', '$age', '$email', '$passwd', '$nbcig')";
 
 		if(mysqli_query($con, $sql)){
-			echo "<h3>data stored in a database successfully."
-				. " Please browse your localhost php my admin"
-				. " to view the updated data</h3>";
-
-			echo nl2br("\n$nom\n $prenom\n $age\n "
-				. "$email\n $passwd\n $nbcig");
+			header("Location: personnal.php");
+        exit();
 		} else{
 			echo "ERROR: Hush! Sorry $sql. "
 				. mysqli_error($con);
@@ -50,8 +46,6 @@
 
 		// Fermeture de la connection
 		mysqli_close($con);
-        header("Location: personnal.php");
-        exit();
 		?>
     </center>
 </body>
