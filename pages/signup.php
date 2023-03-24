@@ -27,6 +27,7 @@
     <main class="container text-center">
         <div class="row justify-content-md-center align-items-center" style="min-height: 100vh">
             <form id="form-signup" class="w-50" action="signup-prog.php" method="post">
+                <!-- Icon -->
                 <a href="../index.html"><img class="mb-4" src="../img/icon/android-chrome-192x192.png" alt="" width="72"
                         height="72" /></a>
                 <h2 class="mb-3 text-center">Inscription</h2>
@@ -35,11 +36,12 @@
                 <div class="alert alert-primary" role="alert">J'ai déjà un compte. <a href="signin.html"
                         class="alert-link">Je me connecte</a></div>
 
-                <!-- Message d'erreur -->
+                <!-- Message d'erreur
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                     <a id="errorMessage">Aucune erreur pour le moment!</a>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
+                -->
 
                 <div class="row">
                     <!-- Prénom -->
@@ -56,6 +58,13 @@
                             <label for="nom">Nom</label>
                         </div>
                     </div>
+                    <!-- Age -->
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="age" placeholder="34" name="age" />
+                            <label for="age">Age</label>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Email -->
@@ -63,7 +72,7 @@
                     <div class="col">
                         <div class="form-floating mb-3">
                             <input type="email" class="form-control" id="email" placeholder="john.doe@example.com"
-                                name="adressemail" />
+                                name="email" />
                             <label for="email">Adresse email</label>
                         </div>
                     </div>
@@ -73,9 +82,9 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control" id="password" placeholder="6mi5q9rvYrl&Rx4v"
-                                name="motdepasse" />
-                            <label for="password">Mot de passe</label>
+                            <input type="password" class="form-control" id="passwd" placeholder="6mi5q9rvYrl&Rx4v"
+                                name="passwd" />
+                            <label for="passwd">Mot de passe</label>
                         </div>
                     </div>
                 </div>
@@ -84,9 +93,8 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="number" class="form-control" id="nbrcig" placeholder="22"
-                                name="nombrecigarettes" />
-                            <label for="nbrcig">Nombre de cigarettes consommés quotidiennement</label>
+                            <input type="number" class="form-control" id="nbcig" placeholder="22" name="nbcig" />
+                            <label for="nbcig">Nombre de cigarettes consommés quotidiennement</label>
                         </div>
                     </div>
                 </div>

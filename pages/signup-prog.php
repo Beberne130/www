@@ -9,44 +9,47 @@
     <center>
         <?php
 
+        // Récupérer les valeurs des champs
+		$nom =  $_REQUEST['nom'];
+        $prenom = $_REQUEST['prenom'];
+        $age = $_REQUEST['age'];
+        $email =  $_REQUEST['email'];
+        $passwd = $_REQUEST['passwd'];
+        $nbcig = $_REQUEST['nbcig'];
+
         // Connection à la base de donnée
         $servername = "eb67u.myd.infomaniak.com";
         $username = "eb67u_site";
         $password = "MDPsparkless30";
         $dbname = "eb67u_sparkless";
-		$conn = mysqli_connect("localhost", "root", "", "staff");
+
+        $con = new mysqli($servername, $username, $password, $dbname);
+
+		// Verifie que la connection soit bien établie
+		if (!$con)
+        {
+            die("Connection failed!" . mysqli_connect_error());
+        }
+
 		
-		// Check connection
-		if($conn === false){
-			die("ERROR: Could not connect. "
-				. mysqli_connect_error());
-		}
-		
-		// Récupérer les valeurs des champs
-		$nom =  $_REQUEST['nom'];
-        $prenom = $_REQUEST['prenom'];
-        $email =  $_REQUEST['adresseemail'];
-        $motdepasse = $_REQUEST['motdepasse'];
-        $nbcig = $_REQUEST['nombrecigarettes'];
-		
+
 		// Ajout des infroamtions dans la table
-		$sql = "INSERT INTO users VALUES ('$nom',
-			'$prenom', '20','$email','$motdepasse','$nbcig')";
-		
-		if(mysqli_query($conn, $sql)){
+		$sql = "INSERT INTO users (id, nom, prenom, email, passwd, nbCigaretteInscription) VALUES ('0', '$nom', '$prenom', '$age', '$email', '$passwd', '$nbcig')";
+
+		if(mysqli_query($con, $sql)){
 			echo "<h3>data stored in a database successfully."
 				. " Please browse your localhost php my admin"
 				. " to view the updated data</h3>";
 
-			echo nl2br("\n$nom\n $prenom\n "
-				. "$email\n $motdepasse\n $nbcig");
+			echo nl2br("\n$nom\n $prenom\n $age\n "
+				. "$email\n $passwd\n $nbcig");
 		} else{
 			echo "ERROR: Hush! Sorry $sql. "
-				. mysqli_error($conn);
+				. mysqli_error($con);
 		}
-		
+
 		// Fermeture de la connection
-		mysqli_close($conn);
+		mysqli_close($con);
 		?>
     </center>
 </body>
