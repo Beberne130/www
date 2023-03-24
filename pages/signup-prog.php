@@ -34,7 +34,7 @@
 		
 
 		// Ajout des infroamtions dans la table
-		$sql = "INSERT INTO users (id, nom, prenom, email, passwd, nbCigaretteInscription) VALUES ('0', '$nom', '$prenom', '$age', '$email', '$passwd', '$nbcig')";
+		$sql = "INSERT INTO users VALUES ('0', '$nom', '$prenom', '$age', '$email', '$passwd', '$nbcig')";
 
 		if(mysqli_query($con, $sql)){
 			echo "<h3>data stored in a database successfully."
@@ -50,6 +50,8 @@
 
 		// Fermeture de la connection
 		mysqli_close($con);
+        header("Location: personnal.php");
+        exit();
 		?>
     </center>
 </body>
