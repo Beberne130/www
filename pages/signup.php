@@ -26,7 +26,7 @@
 <body class="bg-light">
     <main class="container text-center">
         <div class="row justify-content-md-center align-items-center" style="min-height: 100vh">
-            <form id="form-signup" class="w-50" action="signup-prog.php" method="post">
+            <form id="form-signup" action="signup-prog.php" method="post">
                 <!-- Icon -->
                 <a href="../index.html"><img class="mb-4" src="../img/icon/android-chrome-192x192.png" alt="" width="72" height="72" /></a>
                 <h2 class="mb-3 text-center">Inscription</h2>

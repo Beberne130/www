@@ -26,20 +26,12 @@
 <body class="bg-light">
     <main class="container text-center">
         <div class="row justify-content-md-center align-items-center" style="min-height: 100vh">
-            <form id="form-signup" class="w-50">
-                <a href="../index.html"><img class="mb-4" src="../img/icon/android-chrome-192x192.png" alt="" width="72"
-                        height="72" /></a>
+            <form id="form-signup">
+                <a href="../index.html"><img class="mb-4" src="../img/icon/android-chrome-192x192.png" alt="" width="72" height="72" /></a>
                 <h2 class="mb-3 text-center">Connexion</h2>
 
                 <!-- Changement page -->
-                <div class="alert alert-primary" role="alert">Je n'ai pas de compte. <a href="signup.php"
-                        class="alert-link">Je m'inscris</a></div>
-
-                <!-- Message d'erreur -->
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <a id="errorMessage">Aucune erreur pour le moment!</a>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+                <div class="alert alert-primary" role="alert">Je n'ai pas de compte. <a href="signup.php" class="alert-link">Je m'inscris</a></div>
 
                 <!-- Email -->
                 <div class="row">
