@@ -1,49 +1,44 @@
-<!DOCTYPE html>
-<html>
+<?php
+session_start();
+if (isset($_POST['email']) && isset($_POST['passwd'])) {
+    // connexion à la base de données
+    $db_username = 'eb67u_site';
+    $db_password = 'MDPsparkless30';
+    $db_name = 'eb67u_sparkless';
+    $db_host = 'eb67u.myd.infomaniak.com';
+    $db = mysqli_connect($db_host, $db_username, $db_password, $db_name)
+        or die('could not connect to database');
 
-<head>
-    <title>Insert Page page</title>
-</head>
+    // on applique les deux fonctions mysqli_real_escape_string et htmlspecialchars
+    // pour éliminer toute attaque de type injection SQL et XSS
+    $email = mysqli_real_escape_string($db, htmlspecialchars($_POST['email']));
+    $passwd = mysqli_real_escape_string($db, htmlspecialchars($_POST['passwd']));
 
-<body>
-    <center>
-        <?php
-
-        // Récupérer les valeurs des champs
-        $email =  $_REQUEST['email'];
-        $passwd = $_REQUEST['passwd'];
-
-        // Connection à la base de donnée
-        $servername = "eb67u.myd.infomaniak.com";
-        $username = "eb67u_site";
-        $password = "MDPsparkless30";
-        $dbname = "eb67u_sparkless";
-
-        $con = new mysqli($servername, $username, $password, $dbname);
-
-		// Verifie que la connection soit bien établie
-		if (!$con)
+    if ($email !== "" && $passwd !== "") {
+        $requete = "SELECT count(*) FROM users where email = '" . $email . "' and passwd = '" . $passwd . "' ";
+        $exec_requete = mysqli_query($db, $requete);
+        $reponse = mysqli_fetch_array($exec_requete);
+        $count = $reponse['count(*)'];
+        if ($count == 1) // nom d'utilisateur et mot de passe correctes
         {
-            die("Connection failed!" . mysqli_connect_error());
+            $_SESSION['email'] = $email;
+            var_dump("test1");
+            header('Location: personnal.php');
+            exit();
+        } else {
+            var_dump("test2");
+            header('Location: login.php?erreur=1'); // utilisateur ou mot de passe incorrect
+            exit();
         }
-
-		
-
-		// Ajout des infroamtions dans la table
-		$sql = "INSERT INTO users VALUES ('0', '$nom', '$prenom', '$age', '$email', '$passwd', '$nbcig')";
-
-		if(mysqli_query($con, $sql)){
-			header("Location: personnal.php");
+    } else {
+        var_dump("test3");
+        header('Location: login.php?erreur=2'); // utilisateur ou mot de passe vide
         exit();
-		} else{
-			echo "ERROR: Hush! Sorry $sql. "
-				. mysqli_error($con);
-		}
-
-		// Fermeture de la connection
-		mysqli_close($con);
-		?>
-    </center>
-</body>
-
-</html>
+    }
+} else {
+    var_dump("test4");
+    header('Location: login.php?erreur=3');
+    exit();
+}
+mysqli_close($db); // fermer la connexion
+?>

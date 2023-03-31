@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="../src/style.css" />
     <link rel="icon" href="../img/icon/favicon.ico" />
     <link rel="apple-touch-icon" href="../img/icon/android-chrome-512x512.png" />
-    <script src="../src/signup.js" type="module"></script>
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
@@ -26,13 +25,13 @@
 <body class="bg-light">
     <main class="container text-center">
         <div class="row justify-content-md-center align-items-center" style="min-height: 100vh">
-            <form id="form-signup" action="signup-prog.php" method="post">
+            <form id="form-register" action="register-prog.php" method="post">
                 <!-- Icon -->
                 <a href="../index.html"><img class="mb-4" src="../img/icon/android-chrome-192x192.png" alt="" width="72" height="72" /></a>
                 <h2 class="mb-3 text-center">Inscription</h2>
 
                 <!-- Changement page -->
-                <div class="alert alert-primary" role="alert">J'ai déjà un compte. <a href="signin.php" class="alert-link">Je me connecte</a></div>
+                <div class="alert alert-primary" role="alert">J'ai déjà un compte. <a href="login.php" class="alert-link">Je me connecte</a></div>
 
                 <!-- Message d'erreur
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -104,11 +103,11 @@
         </div>
     </main>
     <script>
-    if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("../sw.js", {
-            scope: "/"
-        });
-    }
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("../sw.js", {
+                scope: "/"
+            });
+        }
     </script>
 </body>
 

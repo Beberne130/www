@@ -1,73 +1,64 @@
+<?php
+// Vérifie si le formulaire a été soumis
+if (isset($_POST['submit'])) {
+    // Récupère les données du formulaire
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // Vérifie si l'utilisateur est inscrit dans la base de données
+    // Remplacez les valeurs de connexion à la base de données par les vôtres
+    $host = "eb67u.myd.infomaniak.com";
+    $username = "eb67u_site";
+    $password_db = "MDPsparkless30";
+    $dbname = "eb67u_sparkless";
+    $conn = new mysqli($host, $username, $password_db, $dbname);
+
+    if ($conn->connect_error) {
+        die("La connexion à la base de données a échoué : " . $conn->connect_error);
+    }
+
+    $sql = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // L'utilisateur est inscrit, redirige-le vers la page personnal.php
+        header("Location: personnal.php");
+        exit();
+    } else {
+        // Affiche un message d'erreur
+        $error_message = "L'adresse email ou le mot de passe est incorrect.";
+    }
+
+    $conn->close();
+}
+?>
+
 <!DOCTYPE html>
 <html>
 
 <head>
-    <!-- Liens externes -->
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#FFB100" />
-    <title>Connexion - Sparkless</title>
-    <!-- SOURCES -->
-    <link rel="stylesheet" href="../src/style.css" />
-    <link rel="icon" href="../img/icon/favicon.ico" />
-    <link rel="apple-touch-icon" href="../img/icon/android-chrome-512x512.png" />
-    <script src="../src/signup.js" type="module"></script>
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-    <!-- MDB -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
-    <!-- MANIFEST -->
-    <link rel="manifest" href="../src/manifest.json" />
+    <meta charset="UTF-8">
+    <title>Connexion</title>
 </head>
 
-<body class="bg-light">
-    <main class="container text-center">
-        <div class="row justify-content-md-center align-items-center" style="min-height: 100vh">
-            <form id="form-signup">
-                <a href="../index.html"><img class="mb-4" src="../img/icon/android-chrome-192x192.png" alt="" width="72" height="72" /></a>
-                <h2 class="mb-3 text-center">Connexion</h2>
-
-                <!-- Changement page -->
-                <div class="alert alert-primary" role="alert">Je n'ai pas de compte. <a href="signup.php" class="alert-link">Je m'inscris</a></div>
-
-                <!-- Email -->
-                <div class="row">
-                    <div class="col">
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="email" placeholder="john.doe@example.com" />
-                            <label for="email">Adresse email</label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Mot de passe -->
-                <div class="row">
-                    <div class="col">
-                        <div class="form-floating mb-3">
-                            <input type="password" class="form-control" id="password" placeholder="6mi5q9rvYrl&Rx4v" />
-                            <label for="password">Mot de passe</label>
-                        </div>
-                    </div>
-                </div>
-
-                <br />
-
-                <button type="button" class="inscrire btn btn-lg btn-"><i class="fas fa-arrow-right"></i> Se
-                    connecter</button>
-                <div id="apiError"></div>
-            </form>
+<body>
+    <h1>Connexion</h1>
+    <?php if (isset($error_message)) { ?>
+        <p>
+            <?php echo $error_message; ?>
+        </p>
+    <?php } ?>
+    <form method="post">
+        <div>
+            <label for="email">Adresse email :</label>
+            <input type="email" id="email" name="email" required>
         </div>
-    </main>
-    <script>
-    if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("../sw.js", {
-            scope: "/"
-        });
-    }
-    </script>
+        <div>
+            <label for="password">Mot de passe :</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" name="submit">Se connecter</button>
+    </form>
 </body>
 
 </html>
