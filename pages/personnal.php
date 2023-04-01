@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
     <!-- Liens externes -->
@@ -12,15 +12,13 @@
     <link rel="stylesheet" href="../src/style.css" />
     <link rel="icon" href="../img/icon/favicon.ico" />
     <link rel="apple-touch-icon" href="../img/icon/android-chrome-512x512.png" />
-    <script src="../src/signup.js" type="module"></script>
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
-    <!-- MANIFEST -->
-    <link rel="manifest" href="../src/manifest.json" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
 </head>
 
 <body>

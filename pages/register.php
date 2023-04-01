@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) { // Verifie que le bouton submit soit cliqué
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
     <!-- Liens externes -->
@@ -60,6 +60,7 @@ if (isset($_POST['submit'])) { // Verifie que le bouton submit soit cliqué
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
 </head>
 
 <body class="bg-light">
