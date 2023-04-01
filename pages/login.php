@@ -1,6 +1,6 @@
 <?php
 $message = "";
-if (isset($_POST['submit'])) {
+if (isset($_POST['submit'])) { //Vérifie que le bouton submit soit cliqué
 
 }
 ?>
