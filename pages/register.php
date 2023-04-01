@@ -1,3 +1,45 @@
+<?php
+$message = "";
+if (isset($_POST['submit'])) { //check if form was submitted
+    // Récupérer les valeurs des champs
+    $nom = $_REQUEST['nom'];
+    $prenom = $_REQUEST['prenom'];
+    $age = $_REQUEST['age'];
+    $email = $_REQUEST['email'];
+    $passwd = $_REQUEST['passwd'];
+    $nbcig = $_REQUEST['nbcig'];
+
+    // Connection à la base de donnée
+    $servername = "eb67u.myd.infomaniak.com";
+    $username = "eb67u_site";
+    $password = "MDPsparkless30";
+    $dbname = "eb67u_sparkless";
+
+    $con = new mysqli($servername, $username, $password, $dbname);
+
+    // Verifie que la connection soit bien établie
+    if (!$con) {
+        die("Connection failed!" . mysqli_connect_error());
+    }
+
+
+
+    // Ajout des infroamtions dans la table
+    $sql = "INSERT INTO users VALUES ('0', '$nom', '$prenom', '$age', '$email', '$passwd', '$nbcig')";
+
+    if (mysqli_query($con, $sql)) {
+        header("Location: personnal.php");
+        exit();
+    } else {
+        echo "ERROR: Hush! Sorry $sql. "
+            . mysqli_error($con);
+    }
+
+    // Fermeture de la connection
+    mysqli_close($con);
+}
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -18,14 +60,12 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
-    <!-- MANIFEST -->
-    <link rel="manifest" href="../src/manifest.json" />
 </head>
 
 <body class="bg-light">
     <main class="container text-center">
         <div class="row justify-content-md-center align-items-center" style="min-height: 100vh">
-            <form id="form-register" action="register-prog.php" method="post">
+            <form id="form-register" action="" method="post">
                 <!-- Icon -->
                 <a href="../index.html"><img class="mb-4" src="../img/icon/android-chrome-192x192.png" alt="" width="72" height="72" /></a>
                 <h2 class="mb-3 text-center">Inscription</h2>
@@ -96,19 +136,12 @@
 
                 <br />
 
-                <button type="submit" class="inscrire btn btn-lg btn-"><i class="fas fa-arrow-right"></i>S'inscrire</button>
+                <button type="submit" name="submit" class="inscrire btn btn-lg btn-"><i class="fas fa-arrow-right"></i>S'inscrire</button>
 
                 <div id="apiError"></div>
             </form>
         </div>
     </main>
-    <script>
-        if ("serviceWorker" in navigator) {
-            navigator.serviceWorker.register("../sw.js", {
-                scope: "/"
-            });
-        }
-    </script>
 </body>
 
 </html>
