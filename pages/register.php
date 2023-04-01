@@ -1,6 +1,6 @@
 <?php
 $message = "";
-if (isset($_POST['submit'])) { //check if form was submitted
+if (isset($_POST['submit'])) { // Verifie que le bouton submit soit cliqué
     // Récupérer les valeurs des champs
     $nom = $_REQUEST['nom'];
     $prenom = $_REQUEST['prenom'];
@@ -15,6 +15,7 @@ if (isset($_POST['submit'])) { //check if form was submitted
     $password = "MDPsparkless30";
     $dbname = "eb67u_sparkless";
 
+    // Connection à la BDD avec les identifiants définis précédemment
     $con = new mysqli($servername, $username, $password, $dbname);
 
     // Verifie que la connection soit bien établie
@@ -22,11 +23,10 @@ if (isset($_POST['submit'])) { //check if form was submitted
         die("Connection failed!" . mysqli_connect_error());
     }
 
-
-
     // Ajout des infroamtions dans la table
     $sql = "INSERT INTO users VALUES ('0', '$nom', '$prenom', '$age', '$email', '$passwd', '$nbcig')";
 
+    // Si envoi des données effectué, redirige vers page perso sinon affiche message d'erreur
     if (mysqli_query($con, $sql)) {
         header("Location: personnal.php");
         exit();
