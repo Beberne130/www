@@ -101,7 +101,7 @@ if (isset($_POST['submit'])) { //check if form was submitted
 
                 <br />
 
-                <button type="submit" id="submit" value="LOGIN" class="inscrire btn btn-lg"><i class="fas fa-arrow-right"></i>S'inscrire</button>
+                <button type="submit" name="submit" id="submit" value="LOGIN" class="inscrire btn btn-lg"><i class="fas fa-arrow-right"></i>S'inscrire</button>
                 <?php
                 if (isset($_GET['erreur'])) {
                     $err = $_GET['erreur'];
