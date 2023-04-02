@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) { // Verifie que le bouton submit soit cliqué
     $sql = "INSERT INTO users (nom, prenom, age, email, passwd, nbCigaretteInscription) VALUES ('$nom', '$prenom', '$age', '$email', '$passwd', '$nbcig')";
 
     // Si envoi des données effectué, redirige vers page perso sinon affiche message d'erreur
-    if (mysqli_query($conn, $sql)) {
+    if (mysqli_query($con, $sql)) {
         echo "Nouvel utilisateur enrgistré avec succès";
         header("Location: personnal.php");
         exit();
