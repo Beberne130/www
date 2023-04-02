@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) { // Verifie que le bouton submit soit cliqué
     $dbname = "eb67u_sparkless";
 
     // Connection à la BDD avec les identifiants définis précédemment
-    $con = new mysqli($servername, $username, $password, $dbname);
+    $con = mysqli_connect($servername, $username, $password, $dbname);
 
     // Verifie que la connection soit bien établie
     if (!$con) {
@@ -24,15 +24,15 @@ if (isset($_POST['submit'])) { // Verifie que le bouton submit soit cliqué
     }
 
     // Ajout des infroamtions dans la table
-    $sql = "INSERT INTO users VALUES ('0', '$nom', '$prenom', '$age', '$email', '$passwd', '$nbcig')";
+    $sql = "INSERT INTO users (nom, prenom, age, email, passwd, nbCigaretteInscription) VALUES ('$nom', '$prenom', '$age', '$email', '$passwd', '$nbcig')";
 
     // Si envoi des données effectué, redirige vers page perso sinon affiche message d'erreur
-    if (mysqli_query($con, $sql)) {
+    if (mysqli_query($conn, $sql)) {
+        echo "Nouvel utilisateur enrgistré avec succès";
         header("Location: personnal.php");
         exit();
     } else {
-        echo "ERROR: Hush! Sorry $sql. "
-            . mysqli_error($con);
+        echo "Erreur: " . $sql . "<br>" . mysqli_error($conn);
     }
 
     // Fermeture de la connection
