@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) { // Verifie que le bouton submit soit cliqué
 
     // Verifie que la connection soit bien établie
     if (!$con) {
-        die("Connection failed!" . mysqli_connect_error());
+        die("Connection échouée!" . mysqli_connect_error());
     }
 
     // Ajout des infroamtions dans la table
