@@ -1,3 +1,20 @@
+<?php
+// Démarrer une session
+session_start();
+
+// Vérifier si l'utilisateur est connecté
+if (!isset($_SESSION['session'])) {
+    // Rediriger l'utilisateur vers la page de connexion
+    header('Location: login.php');
+    exit;
+}
+
+// Récupérer les données personnelles de l'utilisateur
+$email = $_SESSION['utilisateur'];
+// Ici, vous pouvez récupérer d'autres données personnelles de l'utilisateur depuis une base de données ou un autre système de stockage.
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -22,14 +39,8 @@
 </head>
 
 <body>
-    <h1>Bienvenue</h1>
-    <script>
-        if ("serviceWorker" in navigator) {
-            navigator.serviceWorker.register("sw.js", {
-                scope: "/"
-            });
-        }
-    </script>
+    <h1>Bienvenue <?php echo $nom_utilisateur; ?> !</h1>
+    <button type="submit" name="logout" id="logout" value="LOGOUT" class="inscrire btn btn-lg">Se déconnecter</button>
 </body>
 
 </html>

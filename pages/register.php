@@ -1,5 +1,4 @@
 <?php
-$message = "";
 if (isset($_POST['submit'])) { // Verifie que le bouton submit soit cliqué
     // Récupérer les valeurs des champs
     $nom = $_REQUEST['nom'];
@@ -24,7 +23,7 @@ if (isset($_POST['submit'])) { // Verifie que le bouton submit soit cliqué
     }
 
     // Ajout des infroamtions dans la table
-    $sql = "INSERT INTO users (nom, prenom, age, email, passwd, nbCigaretteInscription) VALUES ('$nom', '$prenom', '$age', '$email', '$passwd', '$nbcig')";
+    $sql = "INSERT INTO users (nom, prenom, age, email, passwd, nb-cigarette-inscription) VALUES ('$nom', '$prenom', '$age', '$email', '$passwd', '$nbcig')";
 
     // Si envoi des données effectué, redirige vers page perso sinon affiche message d'erreur
     if (mysqli_query($con, $sql)) {

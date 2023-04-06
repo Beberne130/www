@@ -1,5 +1,11 @@
 <?php
-$message = "";
+// Vérifier si l'utilisateur est déjà connecté
+if (isset($_SESSION['utilisateur'])) {
+    // Rediriger l'utilisateur vers la page avec ses données personnelles
+    header('Location: personnal.php');
+    exit;
+}
+
 if (isset($_POST['submit'])) { //Vérifie que le bouton submit soit cliqué
 
     // Identifiants BDD
@@ -15,17 +21,17 @@ if (isset($_POST['submit'])) { //Vérifie que le bouton submit soit cliqué
     $email = $_POST['email'];
     $passwd = $_POST['passwd'];
 
+    // Requête SQL pour vérifier si l'utilisateur existe dans la base de données
     $query = "SELECT * FROM users WHERE email='$email' AND passwd='$passwd'";
     $result = mysqli_query($conn, $query);
 
     // Si l'utilisateur existe dans la base de données, redirigez-le vers la page d'accueil
     if(mysqli_num_rows($result) == 1) {
-    header("Location: personnal.php");
-    exit;
-    }
-
+        $_SESSION['session'] = $_POST['email'];
+        header("Location: personnal.php");
+        exit;
+    } else {
     // Sinon, affichez un message d'erreur
-    else {
     echo "Email ou mot de passe incorrect.";
     }
 
