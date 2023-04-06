@@ -1,6 +1,6 @@
 <?php
 // Vérifier si l'utilisateur est déjà connecté
-if (isset($_SESSION['utilisateur'])) {
+if (isset($_SESSION['session'])) {
     // Rediriger l'utilisateur vers la page avec ses données personnelles
     header('Location: personnal.php');
     exit;
