@@ -1,21 +1,29 @@
 <?php
 $message = "";
 if (isset($_POST['submit'])) { //Vérifie que le bouton submit soit cliqué
+
+    // Identifiants BDD
+    $servername = "eb67u.myd.infomaniak.com";
+    $username = "eb67u_site";
+    $password = "MDPsparkless30";
+    $dbname = "eb67u_sparkless";
+
     // Connexion à la base de données
-    $conn = mysqli_connect("localhost", "utilisateur", "motdepasse", "ma_base_de_donnees");
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
 
     // Vérification de l'email et du mot de passe
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $passwd = $_POST['passwd'];
 
-    $query = "SELECT * FROM utilisateurs WHERE email='$email' AND mot_de_passe='$password'";
+    $query = "SELECT * FROM users WHERE email='$email' AND passwd='$passwd'";
     $result = mysqli_query($conn, $query);
 
     // Si l'utilisateur existe dans la base de données, redirigez-le vers la page d'accueil
     if(mysqli_num_rows($result) == 1) {
-    header("Location: index.php");
+    header("Location: personnal.php");
     exit;
     }
+
     // Sinon, affichez un message d'erreur
     else {
     echo "Email ou mot de passe incorrect.";
@@ -75,8 +83,8 @@ if (isset($_POST['submit'])) { //Vérifie que le bouton submit soit cliqué
                 <div class="row">
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control" id="password" placeholder="6mi5q9rvYrl&Rx4v" name="passwd" />
-                            <label for="password">Mot de passe</label>
+                            <input type="passwd" class="form-control" id="passwd" placeholder="6mi5q9rvYrl&Rx4v" name="passwd" />
+                            <label for="passwd">Mot de passe</label>
                         </div>
                     </div>
                 </div>
