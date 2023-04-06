@@ -1,6 +1,28 @@
 <?php
 $message = "";
 if (isset($_POST['submit'])) { //Vérifie que le bouton submit soit cliqué
+    // Connexion à la base de données
+    $conn = mysqli_connect("localhost", "utilisateur", "motdepasse", "ma_base_de_donnees");
+
+    // Vérification de l'email et du mot de passe
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $query = "SELECT * FROM utilisateurs WHERE email='$email' AND mot_de_passe='$password'";
+    $result = mysqli_query($conn, $query);
+
+    // Si l'utilisateur existe dans la base de données, redirigez-le vers la page d'accueil
+    if(mysqli_num_rows($result) == 1) {
+    header("Location: index.php");
+    exit;
+    }
+    // Sinon, affichez un message d'erreur
+    else {
+    echo "Email ou mot de passe incorrect.";
+    }
+
+    // Fermeture de la connexion à la base de données
+    mysqli_close($conn);
 
 }
 ?>
@@ -61,14 +83,7 @@ if (isset($_POST['submit'])) { //Vérifie que le bouton submit soit cliqué
 
                 <br />
 
-                <button type="submit" name="submit" id="submit" value="LOGIN" class="inscrire btn btn-lg"><i class="fas fa-arrow-right"></i>S'inscrire</button>
-                <?php
-                if (isset($_GET['erreur'])) {
-                    $err = $_GET['erreur'];
-                    if ($err == 1 || $err == 2)
-                        echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
-                }
-                ?>
+                <button type="submit" name="submit" id="submit" value="LOGIN" class="inscrire btn btn-lg"><i class="fas fa-arrow-right"></i>Se connecter</button>        
             </form>
         </div>
     </main>
