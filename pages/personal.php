@@ -51,7 +51,9 @@ $email = $_SESSION['session'];
 
 <body>
     <h1>Bienvenue <?php echo $email; ?> !</h1>
-    <button type="submit" name="logout" id="logout" value="LOGOUT" class="inscrire btn btn-lg">Se déconnecter</button>
+    <form method="post">
+        <input type="submit" name="logout" value="Déconnexion">
+    </form>
 </body>
 
 </html>
