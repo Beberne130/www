@@ -110,8 +110,8 @@ if (isset($_POST['submit'])) { // Verifie que le bouton submit soit cliqué
 						<!-- Age -->
 						<div class="col">
 							<div class="form-floating mb-3">
-								<input type="text" class="form-control" id="age" placeholder="34" name="age" />
-								<label for="age">Age</label>
+								<input type="number" class="form-control" id="age" placeholder="34" name="age" />
+								<label for="age">Âge</label>
 							</div>
 						</div>
 					</div>
