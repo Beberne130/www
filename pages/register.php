@@ -1,4 +1,12 @@
 <?php
+// Vérifier si l'utilisateur est déjà connecté
+session_start();
+if (isset($_SESSION['email'])) {
+    // Rediriger l'utilisateur vers la page avec ses données personnelles
+    header('Location: personal.php');
+    exit;
+}
+
 if (isset($_POST['submit'])) { // Verifie que le bouton submit soit cliqué
     // Récupérer les valeurs des champs
     $nom = $_REQUEST['nom'];
@@ -54,7 +62,7 @@ if (isset($_POST['submit'])) { // Verifie que le bouton submit soit cliqué
             header("Location: personal.php");
             exit();
     } else {
-        echo "Erreur: " . $sql . "<br>" . mysqli_error($con); }// Fermeture de la connection mysqli_close($con); 
+        $error .= "Erreur: " . $sql . "<br>" . mysqli_error($con); }// Fermeture de la connection mysqli_close($con); 
     }
 } ?>
 
