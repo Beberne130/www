@@ -12,27 +12,21 @@ if (isset($_POST['submit'])) { // Verifie que le bouton submit soit cliqué
     $error = "";
     if(empty($_REQUEST['nom'])) {
         $error .= "Le champ nom est manquant.<br>";
-        exit;
     }
     if(empty($_REQUEST['prenom'])) {
         $error .= "Le champ prénom est manquant.<br>";
-        exit;
     }
     if(empty($_REQUEST['age'])) {
         $error .= "Le champ âge est manquant.<br>";
-        exit;
     }
     if(empty($_REQUEST['email'])) {
         $error .= "Le champ email est manquant.<br>";
-        exit;
     }
     if(empty($_REQUEST['passwd'])) {
         $error .= "Le champ mot de passe est manquant.<br>";
-        exit;
     }
     if(empty($_REQUEST['nbcig'])) {
         $error .= "Le champ nombre de cigarettes est manquant.<br>";
-        exit;
     }
 
     if($error != "") {
