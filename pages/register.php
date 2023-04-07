@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) { // Verifie que le bouton submit soit cliqué
     // Si envoi des données effectué, redirige vers page perso sinon affiche message d'erreur
     if (mysqli_query($con, $sql)) {
         echo "Nouvel utilisateur enrgistré avec succès";
-        header("Location: personnal.php");
+        header("Location: personal.php");
         exit();
     } else {
         echo "Erreur: " . $sql . "<br>" . mysqli_error($conn);

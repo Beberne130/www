@@ -9,9 +9,20 @@ if (!isset($_SESSION['session'])) {
     exit;
 }
 
+// Déconnecter l'utilisateur
+if (isset($_POST['logout'])) {
+    // Détruire la session
+    session_destroy();
+    // Rediriger l'utilisateur vers la page de connexion
+    header('Location: login.php');
+    exit;
+}
+
+
 // Récupérer les données personnelles de l'utilisateur
-$email = $_SESSION['utilisateur'];
-// Ici, vous pouvez récupérer d'autres données personnelles de l'utilisateur depuis une base de données ou un autre système de stockage.
+$email = $_SESSION['session'];
+
+
 
 ?>
 
@@ -39,7 +50,7 @@ $email = $_SESSION['utilisateur'];
 </head>
 
 <body>
-    <h1>Bienvenue <?php echo $nom_utilisateur; ?> !</h1>
+    <h1>Bienvenue <?php echo $email; ?> !</h1>
     <button type="submit" name="logout" id="logout" value="LOGOUT" class="inscrire btn btn-lg">Se déconnecter</button>
 </body>
 
