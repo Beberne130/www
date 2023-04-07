@@ -1,3 +1,5 @@
+<?php session_start();?>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 	<div class="container">
 		<a class="navbar-brand me-2" href="/index.php">
@@ -19,10 +21,17 @@
 					<a class="nav-link disabled" href="">Contact</a>
 				</li>
 			</ul>
-			<div class="d-flex align-items-center">
-				<a href="/pages/login.php"><button type="button" class="btn btn-link text-warning px-3 me-2">Connexion</button></a>
-				<a href="/pages/register.php"><button type="button" class="btn btn-warning me-3">Inscription</button></a>
-			</div>
+			<?php if(isset($_SESSION['email'])): ?>
+				<div class="d-flex align-items-center">
+					<a href="/pages/personal.php"><button type="button" class="btn btn-primary px-3 me-2">Ma page</button></a>
+				</div>
+			<?php else: ?>
+				<div class="d-flex align-items-center">
+					<a href="/pages/login.php"><button type="button" class="btn btn-link text-warning px-3 me-2">Connexion</button></a>
+					<a href="/pages/register.php"><button type="button" class="btn btn-warning me-3">Inscription</button></a>
+				</div>
+			<?php endif; ?>
+			
 		</div>
 	</div>
 </nav>
