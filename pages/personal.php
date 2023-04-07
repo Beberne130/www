@@ -3,10 +3,15 @@
 session_start();
 
 // Vérifier si l'utilisateur est connecté
-if (!isset($_SESSION['session'])) {
+if (!isset($_SESSION['email'])) {
     // Rediriger l'utilisateur vers la page de connexion
     header('Location: login.php');
     exit;
+} else {
+    // Récupérer les données personnelles de l'utilisateur
+    $email = $_SESSION['email'];
+    $nom = $_SESSION['nom'];
+    $prenom = $_SESSION['prenom'];
 }
 
 // Déconnecter l'utilisateur
@@ -17,11 +22,6 @@ if (isset($_POST['logout'])) {
     header('Location: login.php');
     exit;
 }
-
-
-// Récupérer les données personnelles de l'utilisateur
-$email = $_SESSION['session'];
-
 
 
 ?>
@@ -50,7 +50,7 @@ $email = $_SESSION['session'];
 </head>
 
 <body>
-    <h1>Bienvenue <?php echo $email; ?> !</h1>
+    <h1>Bienvenue <?php echo $prenom; ?> !</h1>
     <form method="post">
         <input type="submit" name="logout" value="Déconnexion">
     </form>

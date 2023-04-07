@@ -1,7 +1,7 @@
 <?php
 // Vérifier si l'utilisateur est déjà connecté
 session_start();
-if (isset($_SESSION['session'])) {
+if (isset($_SESSION['email'])) {
     // Rediriger l'utilisateur vers la page avec ses données personnelles
     header('Location: personal.php');
     exit;
@@ -23,12 +23,16 @@ if (isset($_POST['submit'])) { //Vérifie que le bouton submit soit cliqué
     $passwd = mysqli_real_escape_string($conn, $_POST['passwd']);
 
     // Requête SQL pour vérifier si l'utilisateur existe dans la base de données
-    $query = "SELECT * FROM users WHERE email='$email' AND passwd='$passwd'";
+    $query = "SELECT nom, prenom FROM users WHERE email='$email' AND passwd='$passwd'";
     $result = mysqli_query($conn, $query);
 
     // Si l'utilisateur existe dans la base de données, redirigez-le vers la page d'accueil
     if(mysqli_num_rows($result) == 1) {
-        $_SESSION['session'] = $email;
+        $row = mysqli_fetch_assoc($result);
+        $_SESSION['email'] = $email;
+        $_SESSION['nom'] = $row['nom'];
+        $_SESSION['prenom'] = $row['prenom'];
+
         header("Location: personal.php");
         exit;
     } else {
@@ -45,23 +49,17 @@ if (isset($_POST['submit'])) { //Vérifie que le bouton submit soit cliqué
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
-		<base href="http://sparkless" />
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<meta name="theme-color" content="#FFB100" />
 		<title>Connexion - Sparkless</title>
-
 		<!-- Liens externes -->
 		<link rel="icon" href="../img/icon/favicon.ico" />
-		<link rel="apple-touch-icon" href="../img/icon/android-chrome-512x512.png" />
 		<!-- Google Fonts -->
 		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
 		<!-- Font Awesome -->
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
 		<!-- MDB -->
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
-
 		<!-- Style CSS -->
 		<link rel="stylesheet" href="../src/style.css" />
 	</head>
