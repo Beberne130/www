@@ -22,7 +22,7 @@
 	</head>
 	<body>
 		<header style="height: 75vh">
-			<?php echo require_once("/src/navbar.php") ?>
+			<?php echo require_once("src/navbar.php") ?>
 
 			<div class="p-5 text-center bg-image h-75" style="background-image: url('img/stop-smoking.jpg')">
 				<div class="mask" style="background-color: rgba(0, 0, 0, 0.6)">
