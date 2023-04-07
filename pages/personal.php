@@ -32,14 +32,10 @@ if (isset($_POST['logout'])) {
 <head>
     <!-- Liens externes -->
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#FFB100" />
     <title>Ma page - Sparkless</title>
     <!-- SOURCES -->
-    <link rel="stylesheet" href="../src/style.css" />
-    <link rel="icon" href="../img/icon/favicon.ico" />
-    <link rel="apple-touch-icon" href="../img/icon/android-chrome-512x512.png" />
+    <link rel="icon" href="/img/icon/favicon.ico" />
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
@@ -47,6 +43,8 @@ if (isset($_POST['logout'])) {
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="/src/style.css" />
 </head>
 
 <body>

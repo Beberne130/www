@@ -3,7 +3,7 @@
 session_start();
 if (isset($_SESSION['email'])) {
     // Rediriger l'utilisateur vers la page avec ses données personnelles
-    header('Location: personal.php');
+    header('Location: /pages/personal.php');
     exit;
 }
 
@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) { //Vérifie que le bouton submit soit cliqué
         $_SESSION['nom'] = $row['nom'];
         $_SESSION['prenom'] = $row['prenom'];
 
-        header("Location: personal.php");
+        header("Location: /pages/personal.php");
         exit;
     } else {
     // Sinon, affichez un message d'erreur
@@ -53,7 +53,7 @@ if (isset($_POST['submit'])) { //Vérifie que le bouton submit soit cliqué
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Connexion - Sparkless</title>
 		<!-- Liens externes -->
-		<link rel="icon" href="../img/icon/favicon.ico" />
+		<link rel="icon" href="/img/icon/favicon.ico" />
 		<!-- Google Fonts -->
 		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
 		<!-- Font Awesome -->
@@ -67,7 +67,7 @@ if (isset($_POST['submit'])) { //Vérifie que le bouton submit soit cliqué
 		<main class="container text-center">
 			<div class="row justify-content-md-center align-items-center min-vh-100">
 				<form id="form-login" action="" method="POST" class="col-md-6 col-lg-5 col-xl-4">
-					<a href="../index.html"><img class="mb-4" src="../img/icon/android-chrome-192x192.png" alt="" width="72" height="72" /></a>
+					<a href="/index.php"><img class="mb-4" src="/img/icon/android-chrome-192x192.png" alt="" width="72" height="72" /></a>
 					<h2 class="mb-3 text-center">Connexion</h2>
 
 					<!-- Email -->

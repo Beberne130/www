@@ -3,7 +3,7 @@
 session_start();
 if (isset($_SESSION['email'])) {
     // Rediriger l'utilisateur vers la page avec ses données personnelles
-    header('Location: personal.php');
+    header('Location: /pages/personal.php');
     exit;
 }
 
@@ -59,7 +59,7 @@ if (isset($_POST['submit'])) { // Verifie que le bouton submit soit cliqué
             $_SESSION['email'] = $email;
             $_SESSION['nom'] = $nom;
             $_SESSION['prenom'] = $prenom;
-            header("Location: personal.php");
+            header("Location: /pages/personal.php");
             exit();
     } else {
         $error .= "Erreur: " . $sql . "<br>" . mysqli_error($con); }// Fermeture de la connection mysqli_close($con); 
@@ -73,7 +73,7 @@ if (isset($_POST['submit'])) { // Verifie que le bouton submit soit cliqué
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Inscription - Sparkless</title>
 		<!-- Liens externes -->
-		<link rel="icon" href="../img/icon/favicon.ico" />
+		<link rel="icon" href="/img/icon/favicon.ico" />
 		<!-- Google Fonts -->
 		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
 		<!-- Font Awesome -->
@@ -89,7 +89,7 @@ if (isset($_POST['submit'])) { // Verifie que le bouton submit soit cliqué
 			<div class="row justify-content-md-center align-items-center min-vh-100">
 				<form id="form-register" action="" method="POST" class="col-md-6 col-lg-5 col-xl-4">
 					<!-- Icon -->
-					<a href="../index.html"><img class="mb-4" src="../img/icon/android-chrome-192x192.png" alt="" width="72" height="72" /></a>
+					<a href="/index.php"><img class="mb-4" src="/img/icon/android-chrome-192x192.png" alt="" width="72" height="72" /></a>
 					<h2 class="mb-3 text-center">Inscription</h2>
 
 					<div class="row">
