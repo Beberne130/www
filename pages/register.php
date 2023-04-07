@@ -29,10 +29,6 @@ if (isset($_POST['submit'])) { // Verifie que le bouton submit soit cliqué
         $error .= "Le champ nombre de cigarettes est manquant.<br>";
     }
 
-    if($error != "") {
-        echo "Erreur :<br>".$error;
-    }
-
     // Connection à la base de donnée
     $servername = "eb67u.myd.infomaniak.com";
     $username = "eb67u_site";
@@ -48,15 +44,18 @@ if (isset($_POST['submit'])) { // Verifie que le bouton submit soit cliqué
     }
 
     // Ajout des infroamtions dans la table
-    $sql = "INSERT INTO users (nom, prenom, age, email, passwd, nbCigaretteInscription) VALUES ('$nom', '$prenom', '$age', '$email', '$passwd', '$nbcig')";
-
-    // Si envoi des données effectué, redirige vers page perso sinon affiche message d'erreur
-    if (mysqli_query($con, $sql)) {
-        header("Location: personal.php");
-        exit();
+    if($error == "") {
+        $sql = "INSERT INTO users (nom, prenom, age, email, passwd, nbCigaretteInscription) VALUES ('$nom', '$prenom', '$age', '$email', '$passwd', '$nbcig')";
+         // Si envoi des données effectué, redirige vers page perso sinon affiche message d'erreur
+        if (mysqli_query($con, $sql)) {
+            $_SESSION['email'] = $email;
+            $_SESSION['nom'] = $nom;
+            $_SESSION['prenom'] = $prenom;
+            header("Location: personal.php");
+            exit();
     } else {
-        echo "Erreur: " . $sql . "<br>" . mysqli_error($con); } // Fermeture de la connection mysqli_close($con); 
-
+        echo "Erreur: " . $sql . "<br>" . mysqli_error($con); }// Fermeture de la connection mysqli_close($con); 
+    }
 } ?>
 
 <!DOCTYPE html>
@@ -152,7 +151,7 @@ if (isset($_POST['submit'])) { // Verifie que le bouton submit soit cliqué
 					<!-- Changement de page -->
 					<div class="mt-3">
 						<span>J'ai un compte.</span>
-						<a href="/pages/login.php" class="link-primary">Je me conencte</a>
+						<a href="/pages/login.php" class="link-primary">Je me connecte</a>
 					</div>
 				</form>
 			</div>
