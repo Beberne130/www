@@ -41,7 +41,7 @@ if (!isset($_SESSION['email'])) {
 <body>
     <?php require_once("../src/navbar.php") ?>
     <main>
-        <h1>Bienvenue <?php echo $prenom; ?> !</h1>
+        <h1>Bienvenue  !</h1>
         <form method="post">
             <input type="submit" name="logout" class="btn btn-lg btn-primary" value="Déconnexion">
         </form>
@@ -49,8 +49,8 @@ if (!isset($_SESSION['email'])) {
     <!-- Jumbotron -->
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-            <h1 class="display-4">Ma consommation de cigarettes</h1>
-            <p class="lead">Sur cette page, vous pouvez suivre votre consommation quotidienne de cigarettes, votre consommation moyenne hebdomadaire et mensuelle, ainsi qu'un graphique de votre consommation de la semaine tracé avec Chart.js.</p>
+            <h1 class="display-4">Bievenue <?php echo $prenom; ?> sur votre page personelle</h1>
+            <p class="lead">Sur cette page, vous pouvez suivre votre consommation de cigarettes.</p>
         </div>
     </div>
 
