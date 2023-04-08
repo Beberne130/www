@@ -23,3 +23,7 @@ body {
 .imageCard {
 	filter: grayscale(100%);
 }
+
+.nombreCard {
+	font-size: x-large;
+}

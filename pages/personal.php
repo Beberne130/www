@@ -54,38 +54,16 @@ if (!isset($_SESSION['email'])) {
 
 			<!-- Contenu de la page -->
 			<div class="container">
-				<!-- Consommation quotidienne -->
-				<div class="row">
-					<div class="col-md-6">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">Consommation quotidienne</h5>
-								<p class="card-text">Vous avez fumé XX cigarettes aujourd'hui.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Consommation moyenne hebdomadaire et mensuelle -->
-				<div class="row">
-					<div class="col-md-6">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">Consommation moyenne hebdomadaire</h5>
-								<p class="card-text">En moyenne, vous fumez XX cigarettes par jour cette semaine.</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">Consommation moyenne mensuelle</h5>
-								<p class="card-text">En moyenne, vous fumez XX cigarettes par jour ce mois-ci.</p>
-							</div>
-						</div>
-					</div>
-				</div>
+                <div class="col col-auto d-flex">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Aujourd'hui</h5>
+                            <p class="card-text nombreCard">5</p>
+                        </div>
+                    </div>
+                </div>
 			</div>
+
 		</main>
 	</body>
 </html>
