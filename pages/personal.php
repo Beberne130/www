@@ -45,6 +45,7 @@ if (!isset($_SESSION['email'])) {
 				<div class="container">
 					<h1 class="display-4"> Bievenue <?php echo $prenom; ?> sur votre page personelle.</h1>
 					<p class="lead">Sur cette page, vous pouvez suivre votre consommation de cigarettes.</p>
+                    <button type="button" class="btn btn-primary">Ajouter une cigarette</button>
 				</div>
 			</div>
 
