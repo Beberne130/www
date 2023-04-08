@@ -41,9 +41,9 @@ if (!isset($_SESSION['email'])) {
 		<?php require_once("../src/navbar.php") ?>
 		<main class="pt-5">
 			<!-- Jumbotron -->
-			<div class="jumbotron jumbotron-fluid">
+			<div class="jumbotron jumbotron-fluid pb-5">
 				<div class="container">
-					<h1 class="display-4"> Bievenue <?php echo $prenom; ?> sur votre page personelle</h1>
+					<h1 class="display-4"> Bievenue <?php echo $prenom; ?> sur votre page personelle.</h1>
 					<p class="lead">Sur cette page, vous pouvez suivre votre consommation de cigarettes.</p>
 				</div>
 			</div>
