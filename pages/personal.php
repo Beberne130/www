@@ -48,7 +48,7 @@ if (isset($_POST['logout'])) {
 </head>
 
 <body>
-    <?php echo require_once("../src/navbar.php") ?>
+    <?php require_once("../src/navbar.php") ?>
     <main>
         <h1>Bienvenue <?php echo $prenom; ?> !</h1>
         <form method="post">
