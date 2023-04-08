@@ -7,12 +7,23 @@ if (!isset($_SESSION['email'])) {
     // Rediriger l'utilisateur vers la page de connexion
     header('Location: login.php');
     exit;
-} else {
-    // Récupérer les données personnelles de l'utilisateur
-    $email = $_SESSION['email'];
-    $nom = $_SESSION['nom'];
-    $prenom = $_SESSION['prenom'];
 }
+
+// Récupérer les données personnelles de l'utilisateur
+$id = $_SESSION['id'];
+$email = $_SESSION['email'];
+$nom = $_SESSION['nom'];
+$prenom = $_SESSION['prenom'];
+
+// Définir le fuseau horaire
+date_default_timezone_set('Europe/Paris');
+// Mettre la variable $today à la date du jour
+$today = date('Y-m-d');
+
+/*$todayConso = "SELECT  FROM consommation WHERE dateConso='$today' AND userId='$id'";
+$resultTodayConso = mysqli_query($conn, $todayConso);*/
+
+
 ?>
 
 <!DOCTYPE html>
