@@ -39,7 +39,7 @@ if (!isset($_SESSION['email'])) {
 
 	<body>
 		<?php require_once("../src/navbar.php") ?>
-		<main class="pt-3">
+		<main class="pt-5">
 			<!-- Jumbotron -->
 			<div class="jumbotron jumbotron-fluid">
 				<div class="container">
