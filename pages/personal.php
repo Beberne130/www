@@ -2,6 +2,15 @@
 // Démarrer une session
 session_start();
 
+// Identifiants BDD
+$servername = "eb67u.myd.infomaniak.com";
+$username = "eb67u_site";
+$password = "MDPsparkless30";
+$dbname = "eb67u_sparkless";
+
+// Connexion à la base de données
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
 // Vérifier si l'utilisateur est connecté
 if (!isset($_SESSION['email'])) {
     // Rediriger l'utilisateur vers la page de connexion
@@ -20,19 +29,25 @@ date_default_timezone_set('Europe/Paris');
 // Récupérer la date du jour
 $today = date('Y-m-d');
 
-// Identifiants BDD
-$servername = "eb67u.myd.infomaniak.com";
-$username = "eb67u_site";
-$password = "MDPsparkless30";
-$dbname = "eb67u_sparkless";
-
-// Connexion à la base de données
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-
+// Consommation de cigarette quotidienne
 $query = "SELECT nbCigarette FROM consommation WHERE dateConso='$today' AND userId='$id'";
 $result = mysqli_query($conn, $query);
-$todayConso = mysqli_fetch_assoc($result);
-extract($todayConso);
+$result2 = mysqli_fetch_assoc($result);
+extract($result2);
+
+// Ajouter une cigarette
+if (isset($_POST['ajouterCigarette'])) {
+    // Ajouter +1 à $nbCigarette
+    $nbCigarette = $nbCigarette + 1;
+    $sql = "INSERT INTO consommation (nbCigarette) WHERE dateConso='$today' VALUES ('$nbCigarette')";
+    // Si une erreur se produit lors de l'envoi, afficher un message d'erreur
+    if (mysqli_query($conn, $sql)) {
+        header("Location: personal.php");
+        exit();
+    } else {
+        $error .= "Erreur: " . $sql . "<br>" . mysqli_error($conn);
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -60,12 +75,19 @@ extract($todayConso);
 	<body>
 		<?php require_once("../src/navbar.php") ?>
 		<main class="pt-5">
+            <?php if(isset($error)): ?>
+                <div class="alert alert-danger mt-3" role="alert">
+                    <?= $error ?>
+                </div>
+            <?php endif; ?>
 			<!-- Jumbotron -->
 			<div class="jumbotron jumbotron-fluid pb-5">
 				<div class="container">
 					<h1 class="display-4"> Bievenue <?php echo $prenom; ?> sur votre page personelle.</h1>
 					<p class="lead">Sur cette page, vous pouvez suivre votre consommation de cigarettes.</p>
-                    <button type="button" class="btn btn-primary">Ajouter une cigarette</button>
+                    <form method="post">
+						<input type="submit" name="ajouterCigarette" class="btn btn-primary" value="Ajouter une cigarette">
+					</form>
 				</div>
 			</div>
 

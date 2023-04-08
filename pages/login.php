@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) { //Vérifie que le bouton submit soit cliqué
     if(mysqli_num_rows($result) == 1) {
         $row = mysqli_fetch_assoc($result);
         $_SESSION['email'] = $email;
-		$_SESSION['id'] = $id;
+		$_SESSION['id'] = $row['id'];
         $_SESSION['nom'] = $row['nom'];
         $_SESSION['prenom'] = $row['prenom'];
 

@@ -51,18 +51,28 @@ if (isset($_POST['submit'])) { // Verifie que le bouton submit soit cliqué
         die("Connection échouée!" . mysqli_connect_error());
     }
 
+	// Définir le fuseau horaire
+	date_default_timezone_set('Europe/Paris');
+	// Récupérer la date du jour
+	$today = date('Y-m-d');
+
     // Ajout des infroamtions dans la table
     if($error == "") {
         $sql = "INSERT INTO users (nom, prenom, age, email, passwd, nbCigaretteInscription) VALUES ('$nom', '$prenom', '$age', '$email', '$passwd', '$nbcig')";
          // Si envoi des données effectué, redirige vers page perso sinon affiche message d'erreur
         if (mysqli_query($con, $sql)) {
 			$query = "SELECT id FROM users WHERE email='$email'";
-    		$result = mysqli_query($conn, $query);
-			$_SESSION['id'] = $result;
+    		$result = mysqli_query($con, $query);
+			$result2 = mysqli_fetch_assoc($result);
+			extract($result2);
+			$_SESSION['id'] = $id;
             $_SESSION['email'] = $email;
             $_SESSION['nom'] = $nom;
             $_SESSION['prenom'] = $prenom;
-            header("Location: /pages/personal.php");
+			$sql2 = "INSERT INTO consommation (userId, dateConso, nbCigarette) VALUES ('$id', '$today', '0')";
+
+
+            //header("Location: /pages/personal.php");
             exit();
     } else {
         $error .= "Erreur: " . $sql . "<br>" . mysqli_error($con); }// Fermeture de la connection mysqli_close($con); 
