@@ -29,7 +29,7 @@ $dbname = "eb67u_sparkless";
 // Connexion à la base de données
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-$query = "SELECT nbCigarette FROM consommation WHERE dateConso='$today' AND userId='18'";
+$query = "SELECT nbCigarette FROM consommation WHERE dateConso='$today' AND userId='$id'";
 $result = mysqli_query($conn, $query);
 $todayConso = mysqli_fetch_assoc($result);
 extract($todayConso);

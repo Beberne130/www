@@ -67,7 +67,9 @@ if (isset($_POST['submit'])) { // Verifie que le bouton submit soit cliqué
     } else {
         $error .= "Erreur: " . $sql . "<br>" . mysqli_error($con); }// Fermeture de la connection mysqli_close($con); 
     }
-} ?>
+
+} 
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
