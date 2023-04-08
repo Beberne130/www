@@ -30,10 +30,10 @@ date_default_timezone_set('Europe/Paris');
 $today = date('Y-m-d');
 
 // Consommation de cigarette quotidienne
-$query = "SELECT nbCigarette FROM consommation WHERE dateConso='$today' AND userId='$id'";
+/*$query = "SELECT nbCigarette FROM consommation WHERE dateConso='$today' AND userId='$id'";
 $result = mysqli_query($conn, $query);
 $result2 = mysqli_fetch_assoc($result);
-extract($result2);
+extract($result2);*/
 ?>
 
 <!DOCTYPE html>
