@@ -34,6 +34,7 @@ $today = date('Y-m-d');
 $result = mysqli_query($conn, $query);
 $result2 = mysqli_fetch_assoc($result);
 extract($result2);*/
+$nbCigarette = '7'
 ?>
 
 <!DOCTYPE html>
