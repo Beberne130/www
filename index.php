@@ -3,15 +3,11 @@
 	<head>
 		<!-- Liens externes -->
 		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="theme-color" content="#FFB100" />
 		<title>Sparkless - LE cendrier qui vous aide à arrêter de fumer</title>
 		<meta name="description" content="Salut, nous sommes l'équipe de Sparkless. Notre conviction est de vous aider à arrêter de fumer. Alors qu'attendez vous ? Rejoignez l'aventure vers un monde sans tabac!" />
 		<!-- SOURCES -->
-		<link rel="stylesheet" href="src/style.css" />
-		<link rel="icon" href="img/icon/favicon.ico" />
-		<link rel="apple-touch-icon" href="img/icon/android-chrome-512x512.png" />
+		<link rel="icon" href="/img/icon/favicon.ico" />
 		<!-- Font Awesome -->
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
 		<!-- Google Fonts -->
@@ -19,12 +15,13 @@
 		<!-- MDB -->
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+		<!-- Style CSS -->
+		<link rel="stylesheet" href="/src/style.css" />
 	</head>
 	<body>
 		<header style="height: 75vh">
-			<?php echo require_once("src/navbar.php") ?>
-
-			<div class="p-5 text-center bg-image h-75" style="background-image: url('img/stop-smoking.jpg')">
+			<?php require_once("src/navbar.php"); ?>
+			<div class="p-5 text-center bg-image h-75" style="background-image: url('img/stop-smoking2.jpg')">
 				<div class="mask" style="background-color: rgba(0, 0, 0, 0.6)">
 					<div class="d-flex justify-content-center align-items-center h-100">
 						<div class="text-white">
@@ -42,7 +39,7 @@
 				<div class="col-sm-4 pt-1">
 					<div class="card shadow-5-strong h-100">
 						<div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-							<img src="img/graphique tabac.jpg" class="img-fluid" />
+							<img src="img/graphique tabac.jpg" class="img-fluid " />
 							<a href="#!">
 								<div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
 							</a>
@@ -56,7 +53,7 @@
 				<div class="col-sm-4 pt-1">
 					<div class="card shadow-5-strong h-100">
 						<div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-							<img src="img/récompense.png" class="img-fluid" />
+							<img src="img/récompense.png" class="img-fluid " />
 							<a href="#!">
 								<div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
 							</a>
@@ -70,7 +67,7 @@
 				<div class="col-sm-4 pt-1">
 					<div class="card shadow-5-strong">
 						<div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-							<img src="img/chatting.png" class="img-fluid" />
+							<img src="img/chatting.png" class="img-fluid " />
 							<a href="#!">
 								<div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
 							</a>

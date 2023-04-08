@@ -1,6 +1,6 @@
 <?php session_start();?>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<div class="container">
 		<a class="navbar-brand me-2" href="/index.php">
 			<img src="/img/icon/android-chrome-512x512.png" height="30" alt="Logo Sparkless" loading="lazy" style="margin-top: -1px" />
@@ -31,7 +31,6 @@
 					<a href="/pages/register.php"><button type="button" class="btn btn-warning me-3">Inscription</button></a>
 				</div>
 			<?php endif; ?>
-			
 		</div>
 	</div>
 </nav>

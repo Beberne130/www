@@ -49,10 +49,12 @@ if (isset($_POST['logout'])) {
 
 <body>
     <?php echo require_once("../src/navbar.php") ?>
-    <h1>Bienvenue <?php echo $prenom; ?> !</h1>
-    <form method="post">
-        <input type="submit" name="logout" class="btn btn-lg btn-primary" value="Déconnexion">
-    </form>
+    <main>
+        <h1>Bienvenue <?php echo $prenom; ?> !</h1>
+        <form method="post">
+            <input type="submit" name="logout" class="btn btn-lg btn-primary" value="Déconnexion">
+        </form>
+    </main>
 </body>
 
 </html>
