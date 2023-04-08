@@ -1,4 +1,15 @@
-<?php session_start();?>
+<?php session_start();
+// Déconnecter l'utilisateur
+if (isset($_POST['logout'])) {
+    // Détruire la session
+    session_destroy();
+    // Rediriger l'utilisateur vers la page de connexion
+    header('Location: /pages/login.php');
+    exit;
+}
+?>
+
+
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<div class="container">
@@ -24,6 +35,9 @@
 			<?php if(isset($_SESSION['email'])): ?>
 				<div class="d-flex align-items-center">
 					<a href="/pages/personal.php"><button type="button" class="btn btn-primary px-3 me-2">Ma page</button></a>
+					<form method="post">
+						<input type="submit" name="logout" class="btn btn-danger px-3 me-2" value="Déconnexion">
+					</form>
 				</div>
 			<?php else: ?>
 				<div class="d-flex align-items-center">

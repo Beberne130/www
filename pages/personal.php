@@ -13,17 +13,6 @@ if (!isset($_SESSION['email'])) {
     $nom = $_SESSION['nom'];
     $prenom = $_SESSION['prenom'];
 }
-
-// Déconnecter l'utilisateur
-if (isset($_POST['logout'])) {
-    // Détruire la session
-    session_destroy();
-    // Rediriger l'utilisateur vers la page de connexion
-    header('Location: login.php');
-    exit;
-}
-
-
 ?>
 
 <!DOCTYPE html>
@@ -45,6 +34,8 @@ if (isset($_POST['logout'])) {
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
     <!-- Style CSS -->
     <link rel="stylesheet" href="/src/style.css" />
+    <!-- ChartJS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -55,6 +46,57 @@ if (isset($_POST['logout'])) {
             <input type="submit" name="logout" class="btn btn-lg btn-primary" value="Déconnexion">
         </form>
     </main>
+    <!-- Jumbotron -->
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Ma consommation de cigarettes</h1>
+            <p class="lead">Sur cette page, vous pouvez suivre votre consommation quotidienne de cigarettes, votre consommation moyenne hebdomadaire et mensuelle, ainsi qu'un graphique de votre consommation de la semaine tracé avec Chart.js.</p>
+        </div>
+    </div>
+
+    <!-- Contenu de la page -->
+    <div class="container">
+
+        <!-- Consommation quotidienne -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Consommation quotidienne</h5>
+                        <p class="card-text">Vous avez fumé XX cigarettes aujourd'hui.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Consommation moyenne hebdomadaire et mensuelle -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Consommation moyenne hebdomadaire</h5>
+                        <p class="card-text">En moyenne, vous fumez XX cigarettes par jour cette semaine.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Consommation moyenne mensuelle</h5>
+                        <p class="card-text">En moyenne, vous fumez XX cigarettes par jour ce mois-ci.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Graphique de la consommation de la semaine -->
+        <div class="row">
+            <div class="col-md-12">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+
+    </div>
 </body>
 
 </html>
