@@ -3,9 +3,12 @@
 if (isset($_POST['logout'])) {
     // Détruire la session
     session_destroy();
-    // Rediriger l'utilisateur vers la page de connexion
-    header('Location: /pages/login.php');
-    exit;
+	header("Refresh:0");
+    // Rediriger l'utilisateur vers la page de connexion s'il se situe sur la page personnelle
+	if (basename($_SERVER['PHP_SELF']) == "personal.php") {
+		header('Location: /pages/login.php');
+		exit;
+	}
 }
 ?>
 
