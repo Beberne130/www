@@ -43,11 +43,7 @@ if (!isset($_SESSION['email'])) {
 			<!-- Jumbotron -->
 			<div class="jumbotron jumbotron-fluid">
 				<div class="container">
-					<h1 class="display-4">
-						Bievenue
-						<?php echo $prenom; ?>
-						sur votre page personelle
-					</h1>
+					<h1 class="display-4"> Bievenue <?php echo $prenom; ?> sur votre page personelle</h1>
 					<p class="lead">Sur cette page, vous pouvez suivre votre consommation de cigarettes.</p>
 				</div>
 			</div>
@@ -57,8 +53,8 @@ if (!isset($_SESSION['email'])) {
                 <div class="col col-auto d-flex">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Aujourd'hui</h5>
-                            <p class="card-text nombreCard">5</p>
+                            <h5 class="card-title text-center">Aujourd'hui</h5>
+                            <p class="card-text"><h1 class="display-4">5</h1></p>
                         </div>
                     </div>
                 </div>
