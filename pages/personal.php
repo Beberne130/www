@@ -17,7 +17,7 @@ $prenom = $_SESSION['prenom'];
 
 // Définir le fuseau horaire
 date_default_timezone_set('Europe/Paris');
-// Mettre la variable $today à la date du jour
+// Récupérer la date du jour
 $today = date('Y-m-d');
 
 // Identifiants BDD
@@ -29,10 +29,10 @@ $dbname = "eb67u_sparkless";
 // Connexion à la base de données
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-$query = "SELECT  FROM consommation WHERE dateConso='$today' AND userId='18'";
-$todayConso = mysqli_query($conn, $query);
-
-
+$query = "SELECT nbCigarette FROM consommation WHERE dateConso='$today' AND userId='18'";
+$result = mysqli_query($conn, $query);
+$todayConso = mysqli_fetch_assoc($result);
+extract($todayConso);
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +65,6 @@ $todayConso = mysqli_query($conn, $query);
 				<div class="container">
 					<h1 class="display-4"> Bievenue <?php echo $prenom; ?> sur votre page personelle.</h1>
 					<p class="lead">Sur cette page, vous pouvez suivre votre consommation de cigarettes.</p>
-                    <p class="lead">Aujourd'hui, nous sommes le: <?php echo $today ?></p>
                     <button type="button" class="btn btn-primary">Ajouter une cigarette</button>
 				</div>
 			</div>
@@ -76,7 +75,7 @@ $todayConso = mysqli_query($conn, $query);
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title text-center">Aujourd'hui</h5>
-                            <p class="card-text"><h1 class="display-4"><?php echo $todayConso?></h1></p>
+                            <p class="card-text"><h1 class="display-4"><?php echo $nbCigarette ?></h1></p>
                         </div>
                     </div>
                 </div>
