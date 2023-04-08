@@ -20,8 +20,17 @@ date_default_timezone_set('Europe/Paris');
 // Mettre la variable $today à la date du jour
 $today = date('Y-m-d');
 
-/*$todayConso = "SELECT  FROM consommation WHERE dateConso='$today' AND userId='$id'";
-$resultTodayConso = mysqli_query($conn, $todayConso);*/
+// Identifiants BDD
+$servername = "eb67u.myd.infomaniak.com";
+$username = "eb67u_site";
+$password = "MDPsparkless30";
+$dbname = "eb67u_sparkless";
+
+// Connexion à la base de données
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+$query = "SELECT  FROM consommation WHERE dateConso='$today' AND userId='18'";
+$todayConso = mysqli_query($conn, $query);
 
 
 ?>
@@ -56,6 +65,7 @@ $resultTodayConso = mysqli_query($conn, $todayConso);*/
 				<div class="container">
 					<h1 class="display-4"> Bievenue <?php echo $prenom; ?> sur votre page personelle.</h1>
 					<p class="lead">Sur cette page, vous pouvez suivre votre consommation de cigarettes.</p>
+                    <p class="lead">Aujourd'hui, nous sommes le: <?php echo $today ?></p>
                     <button type="button" class="btn btn-primary">Ajouter une cigarette</button>
 				</div>
 			</div>
@@ -66,7 +76,7 @@ $resultTodayConso = mysqli_query($conn, $todayConso);*/
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title text-center">Aujourd'hui</h5>
-                            <p class="card-text"><h1 class="display-4">5</h1></p>
+                            <p class="card-text"><h1 class="display-4"><?php echo $todayConso?></h1></p>
                         </div>
                     </div>
                 </div>
