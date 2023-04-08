@@ -40,12 +40,6 @@ if (!isset($_SESSION['email'])) {
 
 <body>
     <?php require_once("../src/navbar.php") ?>
-    <main>
-        <h1>Bienvenue  !</h1>
-        <form method="post">
-            <input type="submit" name="logout" class="btn btn-lg btn-primary" value="Déconnexion">
-        </form>
-    </main>
     <!-- Jumbotron -->
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
