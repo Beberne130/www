@@ -34,20 +34,6 @@ $query = "SELECT nbCigarette FROM consommation WHERE dateConso='$today' AND user
 $result = mysqli_query($conn, $query);
 $result2 = mysqli_fetch_assoc($result);
 extract($result2);
-
-// Ajouter une cigarette
-if (isset($_POST['ajouterCigarette'])) {
-    // Ajouter +1 à $nbCigarette
-    $nbCigarette = $nbCigarette + 1;
-    $sql = "INSERT INTO consommation (nbCigarette) WHERE dateConso='$today' VALUES ('$nbCigarette')";
-    // Si une erreur se produit lors de l'envoi, afficher un message d'erreur
-    if (mysqli_query($conn, $sql)) {
-        header("Location: personal.php");
-        exit();
-    } else {
-        $error .= "Erreur: " . $sql . "<br>" . mysqli_error($conn);
-    }
-}
 ?>
 
 <!DOCTYPE html>

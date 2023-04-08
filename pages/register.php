@@ -69,10 +69,7 @@ if (isset($_POST['submit'])) { // Verifie que le bouton submit soit cliqué
             $_SESSION['email'] = $email;
             $_SESSION['nom'] = $nom;
             $_SESSION['prenom'] = $prenom;
-			$sql2 = "INSERT INTO consommation (userId, dateConso, nbCigarette) VALUES ('$id', '$today', '0')";
-
-
-            //header("Location: /pages/personal.php");
+            header("Location: /pages/personal.php");
             exit();
     } else {
         $error .= "Erreur: " . $sql . "<br>" . mysqli_error($con); }// Fermeture de la connection mysqli_close($con); 
