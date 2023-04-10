@@ -28,6 +28,8 @@ $prenom = $_SESSION['prenom'];
 date_default_timezone_set('Europe/Paris');
 // Récupérer la date du jour
 $today = date('Y-m-d');
+
+$nbCigarette = 14;
 ?>
 
 <!DOCTYPE html>
