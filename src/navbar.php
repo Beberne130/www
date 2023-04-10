@@ -14,7 +14,7 @@ if (isset($_POST['logout'])) {
 
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light pb-2">
 	<div class="container">
 		<a class="navbar-brand me-2" href="/index.php">
 			<img src="/img/icon/android-chrome-512x512.png" height="30" alt="Logo Sparkless" loading="lazy" style="margin-top: -1px" />
