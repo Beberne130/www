@@ -56,11 +56,11 @@ if (isset($_POST['submit'])) { // Verifie que le bouton submit soit cliqué
 	// Récupérer la date du jour
 	$today = date('Y-m-d');
 
-    // Ajout des infroamtions dans la table
+    // Ajout des infroamtions dans la table si pas d'erreur
     if($error == "") {
         $sql = "INSERT INTO users (nom, prenom, age, email, passwd, nbCigaretteInscription) VALUES ('$nom', '$prenom', '$age', '$email', '$passwd', '$nbcig')";
-         // Si envoi des données effectué, redirige vers page perso sinon affiche message d'erreur
         if (mysqli_query($con, $sql)) {
+			// Si l'tuilisateur est inscrit, on récupère l'ID qui lui est assigné
 			$query = "SELECT id FROM users WHERE email='$email'";
     		$result = mysqli_query($con, $query);
 			$result2 = mysqli_fetch_assoc($result);
@@ -71,9 +71,10 @@ if (isset($_POST['submit'])) { // Verifie que le bouton submit soit cliqué
             $_SESSION['prenom'] = $prenom;
             header("Location: /pages/personal.php");
             exit();
-    } else {
-        $error .= "Erreur: " . $sql . "<br>" . mysqli_error($con); }// Fermeture de la connection mysqli_close($con); 
-    }
+		// Sinon affiche message d'erreur
+    	} else {
+        	$error .= "Erreur: " . $sql . "<br>" . mysqli_error($con); }// Fermeture de la connection mysqli_close($con); 
+    	}
 
 } 
 ?>
