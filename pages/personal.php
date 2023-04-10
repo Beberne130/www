@@ -28,13 +28,6 @@ $prenom = $_SESSION['prenom'];
 date_default_timezone_set('Europe/Paris');
 // Récupérer la date du jour
 $today = date('Y-m-d');
-
-// Consommation de cigarette quotidienne
-/*$query = "SELECT nbCigarette FROM consommation WHERE dateConso='$today' AND userId='$id'";
-$result = mysqli_query($conn, $query);
-$result2 = mysqli_fetch_assoc($result);
-extract($result2);*/
-$nbCigarette = '7'
 ?>
 
 <!DOCTYPE html>
