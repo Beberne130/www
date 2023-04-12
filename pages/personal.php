@@ -36,7 +36,7 @@ $conso = mysqli_fetch_assoc($result);
 // Si la ligne n'existe pas
 if (mysqli_num_rows($result) == 0) {
 	// Ajouter une ligne dans la table consommation avec userId=$id, dateConso=$today et nbCigarette=0
-	$sql = "INSERT INTO consommation (userId, dateConso, nbCigarette) VALUES (" . $conso['id'] . ", " . $today . ", '0')";
+	$sql = "INSERT INTO consommation (userId, dateConso, nbCigarette) VALUES (" . $conso['id'] . ", $today, '0')";
 	mysqli_query($conn, $sql);
 }
 // Si le bouton ajouterCigarette est cliqué ajouter une cigarette à la ligne de la table consommation avec userId=$id et dateConso=$today
