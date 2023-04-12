@@ -32,19 +32,17 @@ $today = date('Y-m-d');
 // Vérifier si le une ligne est présente dans la table consommation avec userId=$id et dateConso=$today
 $sql = "SELECT * FROM consommation WHERE userId=$id AND dateConso='$today'";
 $result = mysqli_query($conn, $sql);
-$result2 = mysqli_fetch_assoc($result);
-extract($result2);
+$conso = mysqli_fetch_assoc($result);
 // Si la ligne n'existe pas
 if (mysqli_num_rows($result) == 0) {
 	// Ajouter une ligne dans la table consommation avec userId=$id, dateConso=$today et nbCigarette=0
-	$sql = "INSERT INTO consommation (userId, dateConso, nbCigarette) VALUES ($id, '$today', '0')";
+	$sql = "INSERT INTO consommation (userId, dateConso, nbCigarette) VALUES (" . $conso['id'] . ", " . $today . ", '0')";
 	mysqli_query($conn, $sql);
 }
-
 // Si le bouton ajouterCigarette est cliqué ajouter une cigarette à la ligne de la table consommation avec userId=$id et dateConso=$today
 if (isset($_POST['ajouterCigarette'])) {
-	// Mettre à jour le champs nbCigarette avec userId=$id et dateConso=$today
-	$sql = "UPDATE consommation SET nbCigarette=nbCigarette+1 WHERE userId=$id AND dateConso='$today'";
+	// Mettre à jour le champs nbCigarette avec userId=$conso['id'] et dateConso=$today
+	$sql = "UPDATE consommation SET nbCigarette=nbCigarette+1 WHERE userId=" . $conso['id'] . " AND dateConso='$today'";
 	mysqli_query($conn, $sql);
 	header("Refresh:0");
 }
@@ -97,7 +95,7 @@ if (isset($_POST['ajouterCigarette'])) {
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title text-center">Aujourd'hui</h5>
-                            <p class="card-text"><h1 class="display-4"><?php echo $nbCigarette ?></h1></p>
+                            <p class="card-text"><h1 class="display-4"><?php echo $conso['nbCigarette'] ?></h1></p>
                         </div>
                     </div>
                 </div>
