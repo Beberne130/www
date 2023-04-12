@@ -29,7 +29,18 @@ date_default_timezone_set('Europe/Paris');
 // Récupérer la date du jour
 $today = date('Y-m-d');
 
-$nbCigarette = 14;
+// Vérifier si le une ligne est présente dans la table consommation avec userId=$id et dateConso=$today
+$sql = "SELECT * FROM consommation WHERE userId=$id AND dateConso='$today'";
+$result = mysqli_query($conn, $sql);
+$result2 = mysqli_fetch_assoc($result);
+extract($result2);
+// Si la ligne n'existe pas
+if (mysqli_num_rows($result) == 0) {
+	// Ajouter une ligne dans la table consommation avec userId=$id, dateConso=$today et nbCigarette=0
+	$sql = "INSERT INTO consommation (userId, dateConso, nbCigarette) VALUES ($id, '$today', '0')";
+	mysqli_query($conn, $sql);
+}
+echo $nbCigarette;
 ?>
 
 <!DOCTYPE html>
