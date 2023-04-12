@@ -40,6 +40,13 @@ if (mysqli_num_rows($result) == 0) {
 	$sql = "INSERT INTO consommation (userId, dateConso, nbCigarette) VALUES ($id, '$today', '0')";
 	mysqli_query($conn, $sql);
 }
+
+// Si le bouton ajouterCigarette est cliqué ajouter une cigarette à la ligne de la table consommation avec userId=$id et dateConso=$today
+if (isset($_POST['ajouterCigarette'])) {
+	$nbCigarette++;
+	$sql = "UPDATE consommation SET nbCigarette=$nbCigarette WHERE userId=$id AND dateConso='$today'";
+	mysqli_query($conn, $sql);
+}
 ?>
 
 <!DOCTYPE html>
