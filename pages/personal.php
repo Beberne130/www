@@ -40,7 +40,6 @@ if (mysqli_num_rows($result) == 0) {
 	$sql = "INSERT INTO consommation (userId, dateConso, nbCigarette) VALUES ($id, '$today', '0')";
 	mysqli_query($conn, $sql);
 }
-echo $nbCigarette;
 ?>
 
 <!DOCTYPE html>
