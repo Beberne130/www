@@ -75,7 +75,7 @@ if (mysqli_num_rows($result) == 0) {
 			<!-- Jumbotron -->
 			<div class="jumbotron jumbotron-fluid pb-5">
 				<div class="container">
-					<h1 class="display-4"> Bievenue <?php echo $prenom; ?> sur votre page personelle.</h1>
+					<h1 class="display-4">Bienvenue <?php echo $prenom; ?> sur votre page personelle.</h1>
 					<p class="lead">Sur cette page, vous pouvez suivre votre consommation de cigarettes.</p>
                     <form method="post">
 						<input type="submit" name="ajouterCigarette" class="btn btn-primary" value="Ajouter une cigarette">
