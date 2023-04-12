@@ -39,12 +39,13 @@ if (mysqli_num_rows($result) == 0) {
 	mysqli_query($conn, $sql);
 	header("Refresh:0");
 }
+
 // Si le bouton ajouterCigarette est cliqué ajouter une cigarette à la ligne de la table consommation avec userId=$id et dateConso=$today
 if (isset($_POST['ajouterCigarette'])) {
-	// Mettre à jour le champs nbCigarette avec userId=$conso['id'] et dateConso=$today
+	// Mettre à jour le champs nbCigarette avec userId=$id et dateConso=$today
 	$sql = "UPDATE consommation SET nbCigarette=nbCigarette+1 WHERE userId='$id' AND dateConso='$today'";
 	mysqli_query($conn, $sql);
-	header("Refresh:0");
+	echo "<script>window.location.href = window.location.href;</script>"; //On n'utilise pas header("Refresh:0") car sinon le formulaire est renvoyé quand on rafraichit la page
 }
 ?>
 
