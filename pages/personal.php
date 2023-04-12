@@ -101,7 +101,32 @@ if (isset($_POST['ajouterCigarette'])) {
                     </div>
                 </div>
 			</div>
-
+			<div class="container">
+				<div class="card p-3 mt-5">
+					<canvas id="myChart"></canvas>
+				</div>
+				<script>
+				const ctx = document.getElementById('myChart');
+				new Chart(ctx, {
+					type: 'line',
+					data: {
+					labels: ['XXX', 'XXX', 'XXX', 'XXX', 'Hier', 'Aujourdhui'],
+					datasets: [{
+						label: 'Cigarettes consommés quotidiennement',
+						data: [<?php echo $conso['nbCigarette']; ?>, 19, 3, 5, 2, 3],
+						borderWidth: 1
+					}]
+					},
+					options: {
+					scales: {
+						y: {
+						beginAtZero: true
+						}
+					}
+					}
+				});
+				</script>
+			</div>
 		</main>
 	</body>
 </html>
