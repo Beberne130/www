@@ -28,12 +28,11 @@ if (isset($_POST['submit'])) { //Vérifie que le bouton submit soit cliqué
 
     // Si l'utilisateur existe dans la base de données, redirigez-le vers la page d'accueil
     if(mysqli_num_rows($result) == 1) {
-        $row = mysqli_fetch_assoc($result);
+        $userinfo = mysqli_fetch_assoc($result);
         $_SESSION['email'] = $email;
-		$_SESSION['id'] = $row['id'];
-        $_SESSION['nom'] = $row['nom'];
-        $_SESSION['prenom'] = $row['prenom'];
-
+		$_SESSION['id'] = $userinfo['id'];
+        $_SESSION['nom'] = $userinfo['nom'];
+        $_SESSION['prenom'] = $userinfo['prenom'];
         header("Location: /pages/personal.php");
         exit;
     } else {

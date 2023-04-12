@@ -24,25 +24,25 @@ $email = $_SESSION['email'];
 $nom = $_SESSION['nom'];
 $prenom = $_SESSION['prenom'];
 
-// Définir le fuseau horaire
+// Définir le fuseau horaire et récupérer la date du jour
 date_default_timezone_set('Europe/Paris');
-// Récupérer la date du jour
 $today = date('Y-m-d');
 
 // Vérifier si le une ligne est présente dans la table consommation avec userId=$id et dateConso=$today
-$sql = "SELECT * FROM consommation WHERE userId=$id AND dateConso='$today'";
+$sql = "SELECT * FROM consommation WHERE userId='$id' AND dateConso='$today'";
 $result = mysqli_query($conn, $sql);
 $conso = mysqli_fetch_assoc($result);
 // Si la ligne n'existe pas
 if (mysqli_num_rows($result) == 0) {
 	// Ajouter une ligne dans la table consommation avec userId=$id, dateConso=$today et nbCigarette=0
-	$sql = "INSERT INTO consommation (userId, dateConso, nbCigarette) VALUES (" . $conso['id'] . ", $today, '0')";
+	$sql = "INSERT INTO consommation (userId, dateConso, nbCigarette) VALUES (" . $id . ", \"$today\", '0')";
 	mysqli_query($conn, $sql);
+	header("Refresh:0");
 }
 // Si le bouton ajouterCigarette est cliqué ajouter une cigarette à la ligne de la table consommation avec userId=$id et dateConso=$today
 if (isset($_POST['ajouterCigarette'])) {
 	// Mettre à jour le champs nbCigarette avec userId=$conso['id'] et dateConso=$today
-	$sql = "UPDATE consommation SET nbCigarette=nbCigarette+1 WHERE userId=" . $conso['id'] . " AND dateConso='$today'";
+	$sql = "UPDATE consommation SET nbCigarette=nbCigarette+1 WHERE userId='$id' AND dateConso='$today'";
 	mysqli_query($conn, $sql);
 	header("Refresh:0");
 }
