@@ -46,6 +46,7 @@ if (isset($_POST['ajouterCigarette'])) {
 	$nbCigarette++;
 	$sql = "UPDATE consommation SET nbCigarette=$nbCigarette WHERE userId=$id AND dateConso='$today'";
 	mysqli_query($conn, $sql);
+	header("Refresh:0");
 }
 ?>
 
