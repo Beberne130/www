@@ -128,7 +128,7 @@ if (isset($_POST['ajouterCigarette'])) {
 					labels: ['XXX', 'XXX', 'XXX', 'XXX', 'Hier', 'Aujourdhui'],
 					datasets: [{
 						label: 'Cigarettes consommés quotidiennement',
-						data: [ 22, 19, 5, 12, <?php echo $consohier['nbCigarette']; ?>, <?php echo $conso['nbCigarette']; ?> ],
+						data: [ 22, 19, 5, 12, <?php echo $consohier['nbCigarette']; ?>, <?php echo $consoaujdh['nbCigarette']; ?> ],
 						borderWidth: 1
 					}]
 					},
