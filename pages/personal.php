@@ -242,7 +242,7 @@ if (isset($_POST['ajouterCigarette'])) {
 								to: 0,
 								loop: true
 							}
-						},
+							},
 						scales: {
 							y: {
 								beginAtZero: false
