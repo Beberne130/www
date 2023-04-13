@@ -49,7 +49,19 @@
 							<h3>
 								<p>Prix : 10€</p>
 							</h3>
-							<button type="button" class="btn btn-primary">Acheter</button>
+							<button type="button" class="btn btn-primary">
+								<?php if(isset($_SESSION['email'])): ?>
+								<div class="d-flex align-items-center">
+									<a href="../pages/register.php"></a>
+								</div>
+								<?php else: ?>
+								<div class="d-flex align-items-center">
+									<a href="../pages/login.php"></a>
+								</div>
+								<?php endif; ?>
+
+								Acheter
+							</button>
 						</div>
 					</div>
 				</div>
