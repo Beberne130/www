@@ -201,7 +201,7 @@ if (isset($_POST['ajouterCigarette'])) {
 					<div class="col col-auto d-flex">
 						<div class="card mt-4 w-100">
 							<div class="card-body">
-								<h5 class="card-title">Moyenne du mois</h5>
+								<h5 class="card-title">Moyenne par mois</h5>
 								<p class="card-text"><h1 class="display-4"><?php echo number_format($consoMoyMois['total'], 1) ?></h1></p>
 							</div>
 						</div>
