@@ -45,7 +45,7 @@
 					</div>
 				</div>
 				<div class="col-sm-4">
-					<div class="card-body">
+					<div class="text">
 						<h5 class="card-title">Acheter mon cendrier Sparkless !</h5>
 					</div>
 				</div>
