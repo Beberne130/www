@@ -231,6 +231,8 @@ if (isset($_POST['ajouterCigarette'])) {
 						data: [ <?php echo $consojless6['nbCigarette']; ?>, <?php echo $consojless5['nbCigarette']; ?>, <?php echo $consojless4['nbCigarette']; ?>, <?php echo $consojless3['nbCigarette']; ?>, <?php echo $consohier['nbCigarette']; ?>, <?php echo $consoaujdh['nbCigarette']; ?> ],
 						borderWidth: 3,
 						borderColor: '#ffb100',
+						pointBackgroundColor: "#ffe100",
+   						pointBorderColor: "#ffb100",
 					}]
 
 					},
