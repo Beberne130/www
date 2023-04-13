@@ -27,7 +27,7 @@
 						<div class="text-white">
 							<h1 class="mb-3">Envie d'arrêter de fumer ?</h1>
 							<h4 class="mb-3">Essayez Sparkless dès maintenant!</h4>
-							<a class="btn btn-outline-light btn-lg" href="pages/login.php" role="button">Se connecter</a>
+							<a class="btn btn-outline-light btn-lg" href="pages/ressources.php" role="button">Information</a>
 							<a class="btn btn-outline-light btn-lg" href="" role="button">Acheter</a>
 						</div>
 					</div>

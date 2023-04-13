@@ -28,7 +28,7 @@ if (isset($_POST['logout'])) {
 					<a class="nav-link" aria-current="page" href="/index.php">Accueil</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/pages/ressources.php">Ressources</a>
+					<a class="nav-link" href="/pages/ressources.php">Information</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link disabled" href="">Acheter</a>
