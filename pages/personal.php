@@ -28,7 +28,11 @@ $prenom = $_SESSION['prenom'];
 date_default_timezone_set('Europe/Paris');
 $today = date('Y-m-d');
 $yesterday = date('Y-m-d', strtotime('-1 day'));
-
+$jless2 = date('Y-m-d', strtotime('-2 day'));
+$jless3 = date('Y-m-d', strtotime('-3 day'));
+$jless4 = date('Y-m-d', strtotime('-4 day'));
+$jless5 = date('Y-m-d', strtotime('-5 day'));
+$jless6 = date('Y-m-d', strtotime('-6 day'));
 
 // CHECK CONSO AUJOURD'HUI
 // Vérifier si le une ligne est présente dans la table consommation avec userId=$id et dateConso=$today
@@ -51,6 +55,58 @@ $consohier = mysqli_fetch_assoc($result);
 if (mysqli_num_rows($result) == 0) {
 	// Ajouter une ligne dans la table consommation avec userId=$id, dateConso=$yesterday et nbCigarette=0
 	$sql = "INSERT INTO consommation (userId, dateConso, nbCigarette) VALUES (" . $id . ", \"$yesterday\", '0')";
+	mysqli_query($conn, $sql);
+	header("Refresh:0");
+}
+
+// CHECK CONSO J-3
+// Vérifier si le une ligne est présente dans la table consommation avec userId=$id et dateConso=$jless3
+$sql = "SELECT * FROM consommation WHERE userId='$id' AND dateConso='$jless3'";
+$result = mysqli_query($conn, $sql);
+$consojless3 = mysqli_fetch_assoc($result);
+// Si la ligne n'existe pas
+if (mysqli_num_rows($result) == 0) {
+	// Ajouter une ligne dans la table consommation avec userId=$id, dateConso=$jless3 et nbCigarette=0
+	$sql = "INSERT INTO consommation (userId, dateConso, nbCigarette) VALUES (" . $id . ", \"$jless3\", '0')";
+	mysqli_query($conn, $sql);
+	header("Refresh:0");
+}
+
+// CHECK CONSO J-4
+// Vérifier si le une ligne est présente dans la table consommation avec userId=$id et dateConso=$today
+$sql = "SELECT * FROM consommation WHERE userId='$id' AND dateConso='$jless4'";
+$result = mysqli_query($conn, $sql);
+$consojless4 = mysqli_fetch_assoc($result);
+// Si la ligne n'existe pas
+if (mysqli_num_rows($result) == 0) {
+	// Ajouter une ligne dans la table consommation avec userId=$id, dateConso=$yesterday et nbCigarette=0
+	$sql = "INSERT INTO consommation (userId, dateConso, nbCigarette) VALUES (" . $id . ", \"$jless4\", '0')";
+	mysqli_query($conn, $sql);
+	header("Refresh:0");
+}
+
+// CHECK CONSO J-5
+// Vérifier si le une ligne est présente dans la table consommation avec userId=$id et dateConso=$today
+$sql = "SELECT * FROM consommation WHERE userId='$id' AND dateConso='$jless5'";
+$result = mysqli_query($conn, $sql);
+$consojless5 = mysqli_fetch_assoc($result);
+// Si la ligne n'existe pas
+if (mysqli_num_rows($result) == 0) {
+	// Ajouter une ligne dans la table consommation avec userId=$id, dateConso=$yesterday et nbCigarette=0
+	$sql = "INSERT INTO consommation (userId, dateConso, nbCigarette) VALUES (" . $id . ", \"$jless5\", '0')";
+	mysqli_query($conn, $sql);
+	header("Refresh:0");
+}
+
+// CHECK CONSO J-6
+// Vérifier si le une ligne est présente dans la table consommation avec userId=$id et dateConso=$today
+$sql = "SELECT * FROM consommation WHERE userId='$id' AND dateConso='$jless6'";
+$result = mysqli_query($conn, $sql);
+$consojless6 = mysqli_fetch_assoc($result);
+// Si la ligne n'existe pas
+if (mysqli_num_rows($result) == 0) {
+	// Ajouter une ligne dans la table consommation avec userId=$id, dateConso=$yesterday et nbCigarette=0
+	$sql = "INSERT INTO consommation (userId, dateConso, nbCigarette) VALUES (" . $id . ", \"$jless6\", '0')";
 	mysqli_query($conn, $sql);
 	header("Refresh:0");
 }
@@ -125,10 +181,10 @@ if (isset($_POST['ajouterCigarette'])) {
 				new Chart(ctx, {
 					type: 'line',
 					data: {
-					labels: ['XXX', 'XXX', 'XXX', 'XXX', 'Hier', 'Aujourdhui'],
+					labels: ['<?php echo $jless6; ?>', '<?php echo $jless5; ?>', '<?php echo $jless4; ?>', '<?php echo $jless3; ?>', 'Hier', 'Aujourdhui'],
 					datasets: [{
 						label: 'Cigarettes consommés quotidiennement',
-						data: [ 22, 19, 5, 12, <?php echo $consohier['nbCigarette']; ?>, <?php echo $consoaujdh['nbCigarette']; ?> ],
+						data: [ <?php echo $consojless6['nbCigarette']; ?>, <?php echo $consojless5['nbCigarette']; ?>, <?php echo $consojless4['nbCigarette']; ?>, <?php echo $consojless3['nbCigarette']; ?>, <?php echo $consohier['nbCigarette']; ?>, <?php echo $consoaujdh['nbCigarette']; ?> ],
 						borderWidth: 1
 					}]
 					},
