@@ -27,7 +27,10 @@ $prenom = $_SESSION['prenom'];
 // Définir le fuseau horaire et récupérer la date du jour
 date_default_timezone_set('Europe/Paris');
 $today = date('Y-m-d');
+$yesterday = date('Y-m-d', strtotime('-1 day'));
 
+
+// CHECK CONSO AUJOURD'HUI
 // Vérifier si le une ligne est présente dans la table consommation avec userId=$id et dateConso=$today
 $sql = "SELECT * FROM consommation WHERE userId='$id' AND dateConso='$today'";
 $result = mysqli_query($conn, $sql);
@@ -44,6 +47,27 @@ if (mysqli_num_rows($result) == 0) {
 if (isset($_POST['ajouterCigarette'])) {
 	// Mettre à jour le champs nbCigarette avec userId=$id et dateConso=$today
 	$sql = "UPDATE consommation SET nbCigarette=nbCigarette+1 WHERE userId='$id' AND dateConso='$today'";
+	mysqli_query($conn, $sql);
+	echo "<script>window.location.href = window.location.href;</script>"; //On n'utilise pas header("Refresh:0") car sinon le formulaire est renvoyé quand on rafraichit la page
+}
+
+// CHECK CONSO HIER
+// Vérifier si le une ligne est présente dans la table consommation avec userId=$id et dateConso=$today
+$sql = "SELECT * FROM consommation WHERE userId='$id' AND dateConso='$yesterday'";
+$result = mysqli_query($conn, $sql);
+$conso = mysqli_fetch_assoc($result);
+// Si la ligne n'existe pas
+if (mysqli_num_rows($result) == 0) {
+	// Ajouter une ligne dans la table consommation avec userId=$id, dateConso=$yesterday et nbCigarette=0
+	$sql = "INSERT INTO consommation (userId, dateConso, nbCigarette) VALUES (" . $id . ", \"$yesterday\", '0')";
+	mysqli_query($conn, $sql);
+	header("Refresh:0");
+}
+
+// Si le bouton ajouterCigarette est cliqué ajouter une cigarette à la ligne de la table consommation avec userId=$id et dateConso=$yesterday
+if (isset($_POST['ajouterCigarette'])) {
+	// Mettre à jour le champs nbCigarette avec userId=$id et dateConso=$yesterday
+	$sql = "UPDATE consommation SET nbCigarette=nbCigarette+1 WHERE userId='$id' AND dateConso='$yesterday'";
 	mysqli_query($conn, $sql);
 	echo "<script>window.location.href = window.location.href;</script>"; //On n'utilise pas header("Refresh:0") car sinon le formulaire est renvoyé quand on rafraichit la page
 }
