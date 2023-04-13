@@ -50,6 +50,13 @@
 								<p>Prix : 10€</p>
 							</h3>
 							<button type="button" class="btn btn-primary">
+								<!--
+								******************************
+								******************************
+								**VA CHERCHER DES TUTOS TDC**
+								******************************
+								******************************
+								-->
 								<?php if(isset($_SESSION['email'])): ?>
 								<div class="d-flex align-items-center">
 									<a href="../pages/register.php"></a>
