@@ -117,6 +117,18 @@ $sql = "SELECT SUM(nbCigarette) AS total FROM consommation WHERE userId='$id'";
 $result = mysqli_query($conn, $sql);
 $consoTotale = mysqli_fetch_assoc($result);
 
+// CHECK CONSO MOYENNE MOIS
+// Récupérer le nombre de cigarettes fumées depuis le début de l'inscription pour userId=$id
+$sql = "SELECT SUM(nbCigarette)/30 AS total FROM consommation WHERE userId='$id'";
+$result = mysqli_query($conn, $sql);
+$consoMoyMois = mysqli_fetch_assoc($result);
+
+// CHECK CONSO MOYENNE AN
+// Récupérer le nombre de cigarettes fumées depuis le début de l'inscription pour userId=$id
+$sql = "SELECT SUM(nbCigarette)/365 AS total FROM consommation WHERE userId='$id'";
+$result = mysqli_query($conn, $sql);
+$consoMoyAn = mysqli_fetch_assoc($result);
+
 // Si le bouton ajouterCigarette est cliqué ajouter une cigarette à la ligne de la table consommation avec userId=$id et dateConso=$today
 if (isset($_POST['ajouterCigarette'])) {
 	// Mettre à jour le champs nbCigarette avec userId=$id et dateConso=$today
@@ -169,20 +181,40 @@ if (isset($_POST['ajouterCigarette'])) {
 
 			<!-- Contenu de la page -->
 			<div class="container">
-                <div class="col col-auto d-flex">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Aujourd'hui</h5>
-                            <p class="card-text"><h1 class="display-4"><?php echo $consoaujdh['nbCigarette'] ?></h1></p>
-                        </div>
-                    </div>
-					<div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Consommation totale depuis inscription</h5>
-                            <p class="card-text"><h1 class="display-4"><?php echo $consoTotale['total'] ?></h1></p>
-                        </div>
-                    </div>
-                </div>
+				<div class="row">
+					<div class="col col-auto d-flex">
+						<div class="card mt-4 w-100">
+							<div class="card-body">
+								<h5 class="card-title">Aujourd'hui</h5>
+								<p class="card-text"><h1 class="display-4"><?php echo $consoaujdh['nbCigarette'] ?></h1></p>
+							</div>
+						</div>
+					</div>
+					<div class="col col-auto d-flex">
+						<div class="card mt-4 w-100">
+							<div class="card-body">
+								<h5 class="card-title">Total depuis inscription</h5>
+								<p class="card-text"><h1 class="display-4"><?php echo $consoTotale['total'] ?></h1></p>
+							</div>
+						</div>
+					</div>
+					<div class="col col-auto d-flex">
+						<div class="card mt-4 w-100">
+							<div class="card-body">
+								<h5 class="card-title">Moyenne du mois</h5>
+								<p class="card-text"><h1 class="display-4"><?php echo number_format($consoMoyMois['total'], 1) ?></h1></p>
+							</div>
+						</div>
+					</div>
+					<div class="col col-auto d-flex">
+						<div class="card mt-4 w-100">
+							<div class="card-body">
+								<h5 class="card-title">Moyenne de l'année</h5>
+								<p class="card-text"><h1 class="display-4"><?php echo number_format($consoMoyAn['total'], 1) ?></h1></p>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="container">
 				<div class="card p-3 mt-5">
