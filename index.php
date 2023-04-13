@@ -17,6 +17,8 @@
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
 		<!-- Style CSS -->
 		<link rel="stylesheet" href="/src/style.css" />
+		<!-- Lien Manifest -->
+		<link rel="manifest" href="/src/manifest.json">
 	</head>
 	<body>
 		<header style="height: 75vh">
@@ -81,5 +83,10 @@
 			</div>
 		</main>
 		<?php require_once("src/footer.php"); ?>
+		<script>
+			if('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('/src/sw.js', { scope: '/' });
+			}
+		</script>
 	</body>
 </html>

@@ -202,7 +202,7 @@ if (isset($_POST['ajouterCigarette'])) {
 						<div class="card mt-4 w-100">
 							<div class="card-body">
 								<h5 class="card-title">Moyenne par mois</h5>
-								<p class="card-text"><h1 class="display-4"><?php echo number_format($consoMoyMois['total'], 1) ?></h1></p>
+								<p class="card-text"><h1 class="display-4"><?php echo number_format($consoMoyMois['total'], 1) ?><sub>/jour</sub></h1></p>
 							</div>
 						</div>
 					</div>
@@ -210,7 +210,7 @@ if (isset($_POST['ajouterCigarette'])) {
 						<div class="card mt-4 w-100">
 							<div class="card-body">
 								<h5 class="card-title">Moyenne de l'année</h5>
-								<p class="card-text"><h1 class="display-4"><?php echo number_format($consoMoyAn['total'], 1) ?></h1></p>
+								<p class="card-text"><h1 class="display-4"><?php echo number_format($consoMoyAn['total'], 1) ?><sub>/jour</sub></h1></p>
 							</div>
 						</div>
 					</div>
@@ -229,15 +229,19 @@ if (isset($_POST['ajouterCigarette'])) {
 					datasets: [{
 						label: 'Cigarettes consommés quotidiennement',
 						data: [ <?php echo $consojless6['nbCigarette']; ?>, <?php echo $consojless5['nbCigarette']; ?>, <?php echo $consojless4['nbCigarette']; ?>, <?php echo $consojless3['nbCigarette']; ?>, <?php echo $consohier['nbCigarette']; ?>, <?php echo $consoaujdh['nbCigarette']; ?> ],
-						borderWidth: 1
+						borderWidth: 3,
+						borderColor: '#ffb100',
+						pointBackgroundColor: "#ffe100",
+   						pointBorderColor: "#ffb100",
 					}]
+
 					},
 					options: {
-					scales: {
-						y: {
-						beginAtZero: false
+						scales: {
+							y: {
+								beginAtZero: false
+							}
 						}
-					}
 					}
 				});
 				</script>
