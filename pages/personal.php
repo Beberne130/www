@@ -117,7 +117,6 @@ $sql = "SELECT SUM(nbCigarette) AS total FROM consommation WHERE userId='$id'";
 $result = mysqli_query($conn, $sql);
 $consoTotale = mysqli_fetch_assoc($result);
 
-
 // Si le bouton ajouterCigarette est cliqué ajouter une cigarette à la ligne de la table consommation avec userId=$id et dateConso=$today
 if (isset($_POST['ajouterCigarette'])) {
 	// Mettre à jour le champs nbCigarette avec userId=$id et dateConso=$today
@@ -173,14 +172,14 @@ if (isset($_POST['ajouterCigarette'])) {
                 <div class="col col-auto d-flex">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title text-center">Aujourd'hui</h5>
+                            <h5 class="card-title">Aujourd'hui</h5>
                             <p class="card-text"><h1 class="display-4"><?php echo $consoaujdh['nbCigarette'] ?></h1></p>
                         </div>
                     </div>
 					<div class="card">
                         <div class="card-body">
-                            <h5 class="card-title text-center">Consommation totale depuis inscription</h5>
-                            <p class="card-text"><h1 class="display-4"><?php echo $consoTotale ?></h1></p>
+                            <h5 class="card-title">Consommation totale depuis inscription</h5>
+                            <p class="card-text"><h1 class="display-4"><?php echo $consoTotale['total'] ?></h1></p>
                         </div>
                     </div>
                 </div>
