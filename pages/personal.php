@@ -111,6 +111,13 @@ if (mysqli_num_rows($result) == 0) {
 	header("Refresh:0");
 }
 
+// CHECK CONSO TOTALE
+// Récupérer le nombre de cigarettes fumées depuis le début de l'inscription pour userId=$id
+$sql = "SELECT SUM(nbCigarette) AS total FROM consommation WHERE userId='$id'";
+$result = mysqli_query($conn, $sql);
+$consoTotale = mysqli_fetch_assoc($result);
+
+
 // Si le bouton ajouterCigarette est cliqué ajouter une cigarette à la ligne de la table consommation avec userId=$id et dateConso=$today
 if (isset($_POST['ajouterCigarette'])) {
 	// Mettre à jour le champs nbCigarette avec userId=$id et dateConso=$today
@@ -168,6 +175,12 @@ if (isset($_POST['ajouterCigarette'])) {
                         <div class="card-body">
                             <h5 class="card-title text-center">Aujourd'hui</h5>
                             <p class="card-text"><h1 class="display-4"><?php echo $consoaujdh['nbCigarette'] ?></h1></p>
+                        </div>
+                    </div>
+					<div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Consommation totale depuis inscription</h5>
+                            <p class="card-text"><h1 class="display-4"><?php echo $consoTotale ?></h1></p>
                         </div>
                     </div>
                 </div>
