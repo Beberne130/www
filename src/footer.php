@@ -5,7 +5,7 @@
 		<div class="row">
 			<!--Grid column-->
 			<div class="col">
-				<h5 class="text-uppercase text-dark">Projet Fictif</h5>
+				<h5 class="text-uppercase text-dark">Nota Bene</h5>
 
 				<p class="text-dark text-start">Sparkless est un projet fictif créé dans le cadre de l'examen du Baccalauréat. Il s'agit d'un concept imaginé pour illustrer les avantages potentiels de l'utilisation de la technologie pour aider les fumeurs à arrêter de fumer. Sparkless n'est pas un produit commercial disponible sur le marché, mais plutôt une idée exploratoire qui vise à susciter la réflexion et à encourager la conversation sur les moyens d'améliorer la santé publique. Bien que Sparkless ne soit pas une solution concrète, il soulève des questions importantes sur la manière dont la technologie peut être utilisée pour.</p>
 			</div>
