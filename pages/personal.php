@@ -42,7 +42,6 @@ if (mysqli_num_rows($result) == 0) {
 	mysqli_query($conn, $sql);
 	header("Refresh:0");
 }
-
 // CHECK CONSO HIER
 // Vérifier si le une ligne est présente dans la table consommation avec userId=$id et dateConso=$today
 $sql = "SELECT * FROM consommation WHERE userId='$id' AND dateConso='$yesterday'";
@@ -61,7 +60,7 @@ if (isset($_POST['ajouterCigarette'])) {
 	// Mettre à jour le champs nbCigarette avec userId=$id et dateConso=$today
 	$sql = "UPDATE consommation SET nbCigarette=nbCigarette+1 WHERE userId='$id' AND dateConso='$today'";
 	mysqli_query($conn, $sql);
-	echo "<script>window.location.href = window.location.href;</script>"; //On n'utilise pas header("Refresh:0") car sinon le formulaire est renvoyé quand on rafraichit la page
+	echo "<script>window.location.href = window.location.href;</script>"; //On n'utilise pas header("Refresh:0") car sinon le formulaire est renvoyé
 }
 ?>
 
