@@ -34,7 +34,7 @@ $yesterday = date('Y-m-d', strtotime('-1 day'));
 // Vérifier si le une ligne est présente dans la table consommation avec userId=$id et dateConso=$today
 $sql = "SELECT * FROM consommation WHERE userId='$id' AND dateConso='$today'";
 $result = mysqli_query($conn, $sql);
-$conso = mysqli_fetch_assoc($result);
+$consoaujdh = mysqli_fetch_assoc($result);
 // Si la ligne n'existe pas
 if (mysqli_num_rows($result) == 0) {
 	// Ajouter une ligne dans la table consommation avec userId=$id, dateConso=$today et nbCigarette=0
@@ -43,19 +43,11 @@ if (mysqli_num_rows($result) == 0) {
 	header("Refresh:0");
 }
 
-// Si le bouton ajouterCigarette est cliqué ajouter une cigarette à la ligne de la table consommation avec userId=$id et dateConso=$today
-if (isset($_POST['ajouterCigarette'])) {
-	// Mettre à jour le champs nbCigarette avec userId=$id et dateConso=$today
-	$sql = "UPDATE consommation SET nbCigarette=nbCigarette+1 WHERE userId='$id' AND dateConso='$today'";
-	mysqli_query($conn, $sql);
-	echo "<script>window.location.href = window.location.href;</script>"; //On n'utilise pas header("Refresh:0") car sinon le formulaire est renvoyé quand on rafraichit la page
-}
-
 // CHECK CONSO HIER
 // Vérifier si le une ligne est présente dans la table consommation avec userId=$id et dateConso=$today
 $sql = "SELECT * FROM consommation WHERE userId='$id' AND dateConso='$yesterday'";
 $result = mysqli_query($conn, $sql);
-$conso = mysqli_fetch_assoc($result);
+$consohier = mysqli_fetch_assoc($result);
 // Si la ligne n'existe pas
 if (mysqli_num_rows($result) == 0) {
 	// Ajouter une ligne dans la table consommation avec userId=$id, dateConso=$yesterday et nbCigarette=0
@@ -64,10 +56,10 @@ if (mysqli_num_rows($result) == 0) {
 	header("Refresh:0");
 }
 
-// Si le bouton ajouterCigarette est cliqué ajouter une cigarette à la ligne de la table consommation avec userId=$id et dateConso=$yesterday
+// Si le bouton ajouterCigarette est cliqué ajouter une cigarette à la ligne de la table consommation avec userId=$id et dateConso=$today
 if (isset($_POST['ajouterCigarette'])) {
-	// Mettre à jour le champs nbCigarette avec userId=$id et dateConso=$yesterday
-	$sql = "UPDATE consommation SET nbCigarette=nbCigarette+1 WHERE userId='$id' AND dateConso='$yesterday'";
+	// Mettre à jour le champs nbCigarette avec userId=$id et dateConso=$today
+	$sql = "UPDATE consommation SET nbCigarette=nbCigarette+1 WHERE userId='$id' AND dateConso='$today'";
 	mysqli_query($conn, $sql);
 	echo "<script>window.location.href = window.location.href;</script>"; //On n'utilise pas header("Refresh:0") car sinon le formulaire est renvoyé quand on rafraichit la page
 }
@@ -120,7 +112,7 @@ if (isset($_POST['ajouterCigarette'])) {
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title text-center">Aujourd'hui</h5>
-                            <p class="card-text"><h1 class="display-4"><?php echo $conso['nbCigarette'] ?></h1></p>
+                            <p class="card-text"><h1 class="display-4"><?php echo $consoaujdh['nbCigarette'] ?></h1></p>
                         </div>
                     </div>
                 </div>
@@ -137,7 +129,7 @@ if (isset($_POST['ajouterCigarette'])) {
 					labels: ['XXX', 'XXX', 'XXX', 'XXX', 'Hier', 'Aujourdhui'],
 					datasets: [{
 						label: 'Cigarettes consommés quotidiennement',
-						data: [ 22, 19, 5, 12, 16, <?php echo $conso['nbCigarette']; ?>],
+						data: [ 22, 19, 5, 12, <?php echo $consohier['nbCigarette']; ?>, <?php echo $conso['nbCigarette']; ?>],
 						borderWidth: 1
 					}]
 					},
