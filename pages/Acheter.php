@@ -25,28 +25,32 @@
 				<div class="mask" style="background-color: rgba(0, 0, 0, 0.6)">
 					<div class="d-flex justify-content-center align-items-center h-100">
 						<div class="text-white">
-							<h1 class="mb-3">Commande Sparkless maintenant !</h1>
+							<h1 class="mb-3">Commande du cendrier Sparkless</h1>
 							<h4 class="mb-3">Livraison Rapide et Gratuite !</h4>
 						</div>
 					</div>
 				</div>
 			</div>
 		</header>
-		<main>
-			<div class="row ms-5 mb-5">
-				<div class="col-sm-4">
-					<div class="card shadow-5-strong h-100">
-						<div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-							<img src="../img/graphique tabac.jpg" class="img-fluid" />
-							<a href="#!">
-								<div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
-							</a>
-						</div>
+		<main class="container d-flex">
+			<div class="card mb-3 shadow-5-strong">
+				<div class="row">
+					<div class="col-md-4">
+						<img src="../img/imagecendrierressource.png" class="img-fluid rounded-start" />
 					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="text">
-						<h5 class="card-title">Acheter mon cendrier Sparkless !</h5>
+					<div class="col-md-8">
+						<div class="card-body">
+							<h2 class="card-title">Achète ton cendrier Sparkless</h2>
+							<p class="card-text">La livraison est offerte partout en France métropolitaine et outre-mer. Les commandes passées un jour ouvré avant 12h sont expédiées le jour même en Colissimo J+2. Pour les commandes en outre-mer, des frais supplémentaires peuvent s'appliquer lors du passage en douane.</p>
+							<div class="form-floating mb-3 w-50">
+								<input type="number" class="form-control" id="nbcig" placeholder="22" name="nbcig" />
+								<label for="nbcig">Quantité</label>
+							</div>
+							<h3>
+								<p>Prix : 10€</p>
+							</h3>
+							<button type="button" class="btn btn-primary">Acheter</button>
+						</div>
 					</div>
 				</div>
 			</div>
