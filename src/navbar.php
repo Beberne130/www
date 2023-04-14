@@ -12,9 +12,7 @@ if (isset($_POST['logout'])) {
 }
 ?>
 
-
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light pb-2">
+<nav class="navbar navbar-expand-lg navbar-light bg-light pb-2 sticky-top">
 	<div class="container">
 		<a class="navbar-brand me-2" href="/index.php">
 			<img src="/img/icon/android-chrome-512x512.png" height="30" alt="Logo Sparkless" loading="lazy" style="margin-top: -1px" />
@@ -38,17 +36,17 @@ if (isset($_POST['logout'])) {
 				</li>
 			</ul>
 			<?php if(isset($_SESSION['email'])): ?>
-				<div class="d-flex align-items-center">
-					<a href="/pages/personal.php"><button type="button" class="btn btn-primary px-3 me-2">Ma page</button></a>
-					<form method="post">
-						<input type="submit" name="logout" class="btn btn-danger px-3 me-2" value="Déconnexion">
-					</form>
-				</div>
+			<div class="d-flex align-items-center">
+				<a href="/pages/personal.php"><button type="button" class="btn btn-primary px-3 me-2">Ma page</button></a>
+				<form method="post">
+					<input type="submit" name="logout" class="btn btn-danger px-3 me-2" value="Déconnexion" />
+				</form>
+			</div>
 			<?php else: ?>
-				<div class="d-flex align-items-center">
-					<a href="/pages/login.php"><button type="button" class="btn btn-link text-warning px-3 me-2">Connexion</button></a>
-					<a href="/pages/register.php"><button type="button" class="btn btn-warning me-3">Inscription</button></a>
-				</div>
+			<div class="d-flex align-items-center">
+				<a href="/pages/login.php"><button type="button" class="btn btn-link text-warning px-3 me-2">Connexion</button></a>
+				<a href="/pages/register.php"><button type="button" class="btn btn-warning me-3">Inscription</button></a>
+			</div>
 			<?php endif; ?>
 		</div>
 	</div>
