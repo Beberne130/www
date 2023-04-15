@@ -63,13 +63,6 @@ if (isset($_POST['submit']))
 								</p>
 							</h3>
 							<button type="button" class="btn btn-primary">
-								<!--
-								******************************
-								******************************
-								**VA CHERCHER DES TUTOS TDC**
-								******************************
-								******************************
-								-->
 								<?php if(isset($_SESSION['email'])): ?>
 								<div class="d-flex align-items-center">
 									<a> Votre commande a été enregistrer. </a>
