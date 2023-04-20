@@ -30,6 +30,9 @@ if (isset($_POST['submit'])) { // Verifie que le bouton submit soit cliqué
     if(empty($_REQUEST['email'])) {
         $error .= "Le champ email est manquant.<br>";
     }
+	if(!filter_var($email, FILTER_VALIDATE_EMAIL) && strlen($email) > 5) {
+		$error .= "Le champ email n'est pas valide.<br>";
+	}
     if(empty($_REQUEST['passwd'])) {
         $error .= "Le champ mot de passe est manquant.<br>";
     }
