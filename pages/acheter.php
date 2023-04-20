@@ -1,8 +1,9 @@
 <?php
-if (isset($_POST['submit']))
+if(isset($_GET['cendrier']))
 	{
-		$nbcend = $_REQUEST["cendrier"];
+		$nbcend = $_GET['cendrier'];
 	}
+	$price= 10 * $nbcend;
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -49,14 +50,15 @@ if (isset($_POST['submit']))
 							<h2 class="card-title">Achète ton cendrier Sparkless</h2>
 							<p class="card-text">La livraison est offerte partout en France métropolitaine et outre-mer. Les commandes passées un jour ouvré avant 12h sont expédiées le jour même en Colissimo J+2. Pour les commandes en outre-mer, des frais supplémentaires peuvent s'appliquer lors du passage en douane.</p>
 							<div class="form-floating mb-3 w-50">
-								<input type="number" class="form-control" id="cendrier" placeholder="1" name="cendrier" />
-								<label for="cendrier">Quantité</label>
-								<button type="submit" name="submit" id="submit" value="REGISTER" class="btn btn-lg btn-primary w-100">Valider</button>
-							</div>
+								<form method="get" action=""> <label for="cendrier">Quantité</label> : <input type="number" class="form-control" id="cendrier" placeholder="1" name="cendrier" /> </form>
+								
+								
 							<h3>
 								<p> Prix :
-								<?php $price = 10 * $nbcend;
-								echo  $price
+								<?php
+								 if ($price > 10) {echo  $price;}
+
+								 if ($price == 10) {echo "10";}
 								?>
 
 								€
