@@ -59,6 +59,8 @@ if(isset($_GET['cendrier']))
 								 if ($price > 10) {echo  $price;}
 
 								 if ($price == 10) {echo "10";}
+
+								 if ($price == 0) {echo "10";}
 								?>
 
 								€
