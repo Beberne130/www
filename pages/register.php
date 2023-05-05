@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) { // Verifie que le bouton submit soit cliqué
     $passwd = $_REQUEST['passwd'];
     $nbcig = $_REQUEST['nbcig'];
 
-    // Vérification des champs
+    // Vérification des champs et envoi des messages d'erreur
     $error = "";
     if(empty($_REQUEST['nom'])) {
         $error .= "Le champ nom est manquant.<br>";
@@ -40,7 +40,7 @@ if (isset($_POST['submit'])) { // Verifie que le bouton submit soit cliqué
         $error .= "Le champ nombre de cigarettes est manquant.<br>";
     }
 
-    // Connection à la base de donnée
+    // Identifiants BDD
     $servername = "eb67u.myd.infomaniak.com";
     $username = "eb67u_site";
     $password = "MDPsparkless30";
