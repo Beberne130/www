@@ -195,6 +195,7 @@ if (isset($_POST['ajouterCigarette'])) {
 							<div class="card-body">
 								<h5 class="card-title">Total depuis inscription</h5>
 								<p class="card-text"><h1 class="display-4"><?php echo $consoTotale['total'] ?></h1></p>
+								<p class="card-text">soit <?php echo number_format($consoTotale['total']*0,5, 1) ?>€</p>
 							</div>
 						</div>
 					</div>
