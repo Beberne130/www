@@ -115,7 +115,7 @@ if (mysqli_num_rows($result) == 0) {
 // Récupérer le nombre de cigarettes fumées depuis le début de l'inscription pour userId=$id
 $sql = "SELECT SUM(nbCigarette) AS total FROM consommation WHERE userId='$id'";
 $result = mysqli_query($conn, $sql);
-$consoTotale = mysqli_fetch_assoc($result);
+$consoTotal = mysqli_fetch_assoc($result);
 
 // CHECK CONSO MOYENNE MOIS
 // Récupérer le nombre de cigarettes fumées depuis le début de l'inscription pour userId=$id
@@ -136,6 +136,8 @@ if (isset($_POST['ajouterCigarette'])) {
 	mysqli_query($conn, $sql);
 	echo "<script>window.location.href = window.location.href;</script>"; //On n'utilise pas header("Refresh:0") car sinon le formulaire est renvoyé
 }
+
+$prixTotal = $consoTotal['total'] * 0.5;
 ?>
 
 <!DOCTYPE html>
@@ -162,7 +164,7 @@ if (isset($_POST['ajouterCigarette'])) {
 
 	<body>
 		<?php require_once("../src/navbar.php") ?>
-		<main class="pt-5">
+		<main class="pt-5 mb-5">
             <?php if(isset($error)): ?>
                 <div class="alert alert-danger mt-3" role="alert">
                     <?= $error ?>
@@ -193,15 +195,6 @@ if (isset($_POST['ajouterCigarette'])) {
 					<div class="col col-auto d-flex">
 						<div class="card mt-4 w-100">
 							<div class="card-body">
-								<h5 class="card-title">Total depuis inscription</h5>
-								<p class="card-text"><h1 class="display-4"><?php echo $consoTotale['total'] ?></h1></p>
-								<p class="card-text">soit <?php echo number_format($consoTotale['total']*0,5, 1) ?>€</p>
-							</div>
-						</div>
-					</div>
-					<div class="col col-auto d-flex">
-						<div class="card mt-4 w-100">
-							<div class="card-body">
 								<h5 class="card-title">Moyenne par mois</h5>
 								<p class="card-text"><h1 class="display-4"><?php echo number_format($consoMoyMois['total'], 1) ?><sub>/jour</sub></h1></p>
 							</div>
@@ -212,6 +205,23 @@ if (isset($_POST['ajouterCigarette'])) {
 							<div class="card-body">
 								<h5 class="card-title">Moyenne de l'année</h5>
 								<p class="card-text"><h1 class="display-4"><?php echo number_format($consoMoyAn['total'], 1) ?><sub>/jour</sub></h1></p>
+							</div>
+						</div>
+					</div>
+					<div class="col col-auto d-flex">
+						<div class="card mt-4 w-100">
+							<div class="card-body">
+								<h5 class="card-title">Total depuis inscription</h5>
+								<p class="card-text"><h1 class="display-4"><?php echo $consoTotal['total'] ?></h1></p>
+							</div>
+						</div>
+					</div>
+					<div class="col col-auto d-flex">
+						<div class="card mt-4 w-100">
+							<div class="card-body">
+								<h5 class="card-title">Dépense totale depuis inscription</h5>
+								<!--<sub><small>Estimation pour un paquet de 20 cigarettes à 10€</small></sub>-->
+								<p class="card-text"><h1 class="display-4"><?php echo $prixTotal ?>€</h1></p>
 							</div>
 						</div>
 					</div>
@@ -248,5 +258,6 @@ if (isset($_POST['ajouterCigarette'])) {
 				</script>
 			</div>
 		</main>
+		<?php require_once("../src/footer.php"); ?>
 	</body>
 </html>
