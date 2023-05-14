@@ -41,7 +41,7 @@
 				<div class="col-sm-4 pt-1">
 					<div class="card shadow-5-strong h-100">
 						<div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-							<img src="img/graphique tabac.jpg" class="img-fluid" />
+							<img src="img/graphique-tabac.jpg" class="img-fluid" alt="Image représentant un dessin de graphique avec des cigarettes à la place des batons"/>
 							<a href="#!">
 								<div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
 							</a>
