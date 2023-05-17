@@ -32,7 +32,7 @@ if (isset($_POST['logout'])) {
 					<a class="nav-link" href="/pages/acheter.php">Acheter</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link disabled" href="">Contact</a>
+					<a class="nav-link" href="/pages/contact.php">Contact</a>
 				</li>
 			</ul>
 			<?php if(isset($_SESSION['email'])): ?>
