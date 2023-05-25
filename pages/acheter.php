@@ -1,3 +1,10 @@
+<?php
+if(isset($_GET['cendrier']))
+	{
+		$nbcend = $_GET['cendrier'];
+	}
+	$price= 10 * $nbcend;
+?>
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
@@ -43,23 +50,26 @@
 							<h2 class="card-title">Achète ton cendrier Sparkless</h2>
 							<p class="card-text">La livraison est offerte partout en France métropolitaine et outre-mer. Les commandes passées un jour ouvré avant 12h sont expédiées le jour même en Colissimo J+2. Pour les commandes en outre-mer, des frais supplémentaires peuvent s'appliquer lors du passage en douane.</p>
 							<div class="form-floating mb-3 w-50">
-								<input type="number" class="form-control" id="nbcig" placeholder="22" name="nbcig" />
-								<label for="nbcig">Quantité</label>
-							</div>
+								<form method="get" action=""> <label for="cendrier">Quantité</label> : <input type="number" class="form-control" id="cendrier" placeholder="1" name="cendrier" /> </form>
+								
+								
 							<h3>
-								<p>Prix : 10€</p>
+								<p> Prix :
+								<?php
+								 if ($price > 10) {echo  $price;}
+
+								 if ($price == 10) {echo "10";}
+
+								 if ($price == 0) {echo "10";}
+								?>
+
+								€
+								</p>
 							</h3>
 							<button type="button" class="btn btn-primary">
-								<!--
-								******************************
-								******************************
-								**VA CHERCHER DES TUTOS TDC**
-								******************************
-								******************************
-								-->
 								<?php if(isset($_SESSION['email'])): ?>
 								<div class="d-flex align-items-center">
-									<a href="../pages/register.php"></a>
+									<a> Votre commande a été enregistrer. </a>
 								</div>
 								<?php else: ?>
 								<div class="d-flex align-items-center">

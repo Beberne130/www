@@ -18,7 +18,7 @@
 		<!-- Style CSS -->
 		<link rel="stylesheet" href="/src/style.css" />
 		<!-- Lien Manifest -->
-		<link rel="manifest" href="/src/manifest.json">
+		<link rel="manifest" href="/src/manifest.json" />
 	</head>
 	<body>
 		<header style="height: 75vh">
@@ -30,7 +30,7 @@
 							<h1 class="mb-3">Envie d'arrêter de fumer ?</h1>
 							<h4 class="mb-3">Essayez Sparkless dès maintenant!</h4>
 							<a class="btn btn-outline-light btn-lg" href="pages/ressources.php" role="button">Information</a>
-							<a class="btn btn-outline-light btn-lg" href="" role="button">Acheter</a>
+							<a class="btn btn-outline-light btn-lg" href="pages/acheter.php" role="button">Acheter</a>
 						</div>
 					</div>
 				</div>
@@ -84,8 +84,8 @@
 		</main>
 		<?php require_once("src/footer.php"); ?>
 		<script>
-			if('serviceWorker' in navigator) {
-			navigator.serviceWorker.register('/src/sw.js', { scope: '/' });
+			if ("serviceWorker" in navigator) {
+				navigator.serviceWorker.register("/src/sw.js", { scope: "/" });
 			}
 		</script>
 	</body>
